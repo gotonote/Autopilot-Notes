@@ -2,13 +2,12 @@
 import os
 import os.path as osp
 import cv2
-import numpy as np
-import glob
+import numpy
 from PIL import Image, ImageFont, ImageDraw
 
 
 def watermark(image, text, size=None, color=None, alpha=1.0, position=0):
-    back = Image.fromarray(image).convert('RGBA') if type(image) is np.ndarray else image.convert('RGBA')
+    back = Image.fromarray(image).convert('RGBA') if type(image) is numpy.ndarray else image.convert('RGBA')
     fore = Image.new(back.mode, back.size, (0, 0, 0, 0))
     # size = min(back.width, back.height) // 20 if size is None else max(20, size)
     size = min(int(back.width * size), int(back.height * size)) 
@@ -29,17 +28,22 @@ def watermark(image, text, size=None, color=None, alpha=1.0, position=0):
     draw = ImageDraw.Draw(fore)
     draw.text((x, y), text, rgba, font)
     output = Image.alpha_composite(back, fore).convert('RGB')
-    return np.uint8(output) if type(image) is np.ndarray else output
+    return numpy.uint8(output) if type(image) is numpy.ndarray else output
 
-def img_mark(input_dir):
-    img_list = glob.glob(input_dir + '/**/'+ '*.jpg',recursive=True)
+def img_mark(input_dir, output_dir):
+    img_list = os.listdir(input_dir)
+    img_list = [osp.join(input_dir, i) for i in img_list if '.jpg' in i]
+
+    print(img_list)
     for img_path in img_list:
-        print(img_path)
-        retpath = img_path.replace('images', 'imgs')
-        image = cv2.imdecode(np.fromfile(img_path, dtype=np.uint8), cv2.IMREAD_COLOR)
+        img_name = osp.basename(img_path)
+        retpath = osp.join(output_dir, img_name)
+
+        image = cv2.imread(img_path, cv2.IMREAD_COLOR)
         water_log = "github: Autopilot-Updating-Notes"
-        image = watermark(image, water_log, alpha=1.0, color=(169,169,169), position=3, size=0.03)
+        image = watermark(image, water_log, alpha=0.9, color=(169,169,169), position=3, size=0.02)
         cv2.imwrite(retpath, image)
 
-input_dir = '.'
-img_mark(input_dir)
+input_dir = './images'
+output_dir = './imgs'
+img_mark(input_dir, output_dir)
