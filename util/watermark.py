@@ -11,7 +11,7 @@ def watermark(image, text, size=None, color=None, alpha=1.0, position=0):
     back = Image.fromarray(image).convert('RGBA') if type(image) is np.ndarray else image.convert('RGBA')
     fore = Image.new(back.mode, back.size, (0, 0, 0, 0))
     # size = min(back.width, back.height) // 20 if size is None else max(20, size)
-    size = min(int(back.width * size), int(back.height * size)) 
+    size = max(20, min(int(back.width * size), int(back.height * size), 30))
     font = ImageFont.truetype("arial.ttf", size)
     w, h = font.getsize(text)
     rgba = (255, 255, 255) if color is None else color
