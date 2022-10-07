@@ -32,14 +32,16 @@ def watermark(image, text, size=None, color=None, alpha=1.0, position=0):
     return np.uint8(output) if type(image) is np.ndarray else output
 
 def img_mark(input_dir):
-    img_list = glob.glob(input_dir + '/**/'+ '*.jpg',recursive=True)
+    img_list = glob.glob(input_dir + '/**/images/'+ '*.jpg',recursive=True)
     for img_path in img_list:
-        print(img_path)
         retpath = img_path.replace('images', 'imgs')
+        if osp.exists(retpath):
+            continue
         image = cv2.imdecode(np.fromfile(img_path, dtype=np.uint8), cv2.IMREAD_COLOR)
         water_log = "github: Autopilot-Updating-Notes"
         image = watermark(image, water_log, alpha=1.0, color=(169,169,169), position=3, size=0.03)
-        cv2.imwrite(retpath, image)
+        # cv2.imwrite(retpath, image)
+        cv2.imencode('.jpg', image)[1].tofile(retpath)
 
 input_dir = '.'
 img_mark(input_dir)
