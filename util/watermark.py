@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import glob
 from PIL import Image, ImageFont, ImageDraw
+import random
 
 
 def watermark(image, text, size=None, color=None, alpha=1.0, position=0):
@@ -23,7 +24,8 @@ def watermark(image, text, size=None, color=None, alpha=1.0, position=0):
     elif position == 2:
         x, y = back.width - w - 8, 4
     elif position == 3:
-        x, y = back.width - w - 8, back.height - h - 8
+        offset = random.randint(8,10)
+        x, y = back.width - w - offset, back.height - h - offset
     elif position == 4:
         x, y = 8, back.height - h - 8
     draw = ImageDraw.Draw(fore)
