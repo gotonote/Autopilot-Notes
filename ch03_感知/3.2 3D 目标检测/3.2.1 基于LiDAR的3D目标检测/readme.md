@@ -68,11 +68,11 @@
 
 #### （二）柱体
 
->柱体可以被视为特殊的体素，其中体素的大小在垂直方向上是无限的。通过PointNet将点聚集成柱状特征[207]，再将其分散回去，构建二维BEV图像进行特征提取。PointPillars[117]是一个开创性的工作，介绍了柱体表示，随后的是[283,68]。
+>柱体可以被视为特殊的体素，其中体素的大小在垂直方向上是无限的。通过PointNet将点聚集成柱状特征[11]，再将其分散回去，构建二维BEV图像进行特征提取。PointPillars[12]是一个开创性的工作，介绍了柱体表示。
 
 #### （三）BEV 特征图
 
->鸟瞰特征图是一种密集的二维表示，其中每个像素对应一个特定的区域，并对该区域内的点信息进行编码。BEV特征图可以由体素和柱体投影到鸟瞰图中获得，也可以通过汇总像素区域内的点统计数据，直接从原始点云中获得。常用的统计数据包括二进制占用率[314,313,2]和局部点云高度和密度[40,10,342,3,245,346,8,119]。
+>鸟瞰特征图是一种密集的二维表示，其中每个像素对应一个特定的区域，并对该区域内的点信息进行编码。BEV特征图可以由体素和柱体投影到鸟瞰图中获得，也可以通过汇总像素区域内的点统计数据，直接从原始点云中获得。常用的统计数据包括二进制占用率和局部点云高度和密度。
 
 基于网格的神经网络。目前主要有两种基于网格的网络：用于BEV特征图和柱体的2D卷积神经网络，以及用于体素的3D稀疏神经网络。
 
@@ -86,26 +86,17 @@
 
 ### 三、基于Point-Voxel的3D目标检测方法
 
-基于点-体素的方法采用了一种混合架构，利用点和体素进行3D目标检测。主要分为两类:单阶段检测框架和两阶段检测框架。下图显示了这两个类别的示例及分类：
+<div align=center>
+<img src="./imgs/3.2.1.6.jpg" width="600" height="250">
+</div>
+<div align=center> 图4. 基于点-体素的3D目标检测框架 </div>
 
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9y4Brm7SwKXJec80R3qK6QPHk7h5z5lj7UOMSbRLiceicfZ2TC0juRyGgA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 基于Point-Voxel的3D目标检测框架" width="600" height="200" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图6. 基于Point-Voxel的3D目标检测框架</div>
-</center>
+基于点-体素的方法采用了一种混合架构，利用点和体素进行3D目标检测。主要分为两类:单阶段检测框架和两阶段检测框架。上图4显示了这两个类别的示例，下表3给出了相应的分类方法：
 
-
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9y74omu9LkaLZZXIBicibk0pJib4LcdHbaRLLqb5bIzc3N4CY57z4LYJUIg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 基于Point-Voxel的3D目标检测方法" width="600" height="200" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图7. 基于Point-Voxel的3D目标检测方法</div>
-</center>
+<div align=center>
+<img src="./imgs/3.2.1.7.jpg" width="500" height="300">
+</div>
+<div align=center> 表3. 基于点-体素的3D目标检测方法</div>
 
 单阶段基于点-体素的3D目标检测器通过骨干网络中的点-体素和体素-点的变换来连接点和体素的特征。点包含细粒度的几何信息，体素计算效率高，在特征提取阶段将它们结合在一起更加有利。代表性工作包括：PVCNN、SPVNAS、SA-SSD、PVGNet等。
 
@@ -237,6 +228,10 @@ NeurIPS \
 cross-view spatial attention. In: CVPR \
 [10] Ye M., Xu S., Cao T. (2020) Hvnet: Hybrid voxel network for lidar based 3d object
 detection. In: CVPR \
+[11] Qi C. R., Su H., Mo K., Guibas L. J. (2017) Pointnet: Deep learning on point sets for
+3d classification and segmentation. In: CVPR \
+[12] Lang A. H., Vora S., Caesar H., Zhou L., Yang J., Beijbom O. (2019) Pointpillars: Fast
+encoders for object detection from point clouds. In: CVPR \
 
 
 
