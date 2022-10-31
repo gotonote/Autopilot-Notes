@@ -106,35 +106,23 @@
 
 ### 四、基于深度图的3D目标检测
 
-Range图像是一种密集而紧凑的2D表示，其中每个像素包含3D深度信息，而不是RGB值。需要针对Range图设计模型和算子，并要选择合适的视图。
+<div align=center>
+<img src="./imgs/3.2.1.8.jpg" width="500" height="500">
+</div>
+<div align=center> 图5. 基于深度图的3D目标检测框架</div>
 
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9yULtXC80A0sh6p6sVnJErhqSOWYt87x67QyxfGP3SVHEBibVdGKIHFvw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 基于Range的3D目标检测" width="600" height="500" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图8. 基于Range的3D目标检测框架</div>
-</center>
+深度图是一种密集而紧凑的2D表示，其中每个像素包含3D深度信息，而不是RGB值。需要针对深度图设计模型和算子，并要选择合适的视图。
 
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9y3Jnt4mh7hiatkZyictiaUibbmLMIpB4avu3cRqL5Mic20JeGqF7k6VkbKzA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 基于Range的3D目标检测" width="600" height="200" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图9. 基于Range的3D目标检测方法</div>
-</center>
+<div align=center>
+<img src="./imgs/3.2.1.9.jpg" width="500" height="150">
+</div>
+<div align=center> 表4. 基于深度图的3D目标检测方法</div>
 
-Range图是2D的，可以借鉴2D目标检测方法，比如LaserNet，还有一些借鉴了U-Net、RPN、R-CNN、FCN、FPN等。
+深度图是2D的，可以**借鉴**2D目标检测方法，比如LaserNet，还有一些借鉴了U-Net、RPN、R-CNN、FCN、FPN等。其像素包含的是距离信息，而非颜色值，因此传统的2D标准卷积算子无法完全适用，滑动窗口中的像素在3D空间中可能会相距很远。一些工作采用了新算子来有效地从深度像素中提取特征，包括深度扩张卷积[13]、图算子[14]和元核卷积[15]等。
 
-Range图的像素包含的是距离信息，而非颜色值，因此传统的2D标准卷积算子无法完全适用，滑动窗口中的像素在3D空间中可能会相距很远。一些工作采用了新算子来有效地从Range像素中提取特征，包括深度扩张卷积[11]、图算子[26]和元核卷积[67]等。
+深度图是从深度视图（Range View）中获取的，深度视图是点云的球面投影。对于许多基于深度的方法来说，直接从深度视图检测3D目标是很自然的。然而，从深度视图进行检测不可避免地会遇到球面投影所带来的遮挡和尺度变化问题。为了规避这些问题，许多方法尝试利用其他视图来预测3D目标，如：圆柱形视图(CYV)，深度视图和鸟瞰视图(BEV)、点视图(PV)的组合。
 
-Range图是从Range视图（Range View）中获取的，RangeView是点云的球面投影。对于许多基于深度的方法[178,11,67,26]来说，直接从Range视图检测3D目标是很自然的。然而，从Range视图进行检测不可避免地会遇到球面投影所带来的遮挡和尺度变化问题。为了规避这些问题，许多方法尝试利用其他视图来预测3D目标，例如[219]中利用的圆柱形视图(CYV)，其它方案尝试Range视图和鸟瞰视图(BEV)、点视图(PV)的组合。
-
-Range视图由于可以借鉴2D卷积的优点，做特征提取比较好，但由于遮挡和尺度问题，直接在上面做检测效果不好，需要结合BEV来做检测，所以现在一般是Range图做特征提取，BEV上做检测。
-
-
+深度视图由于可以借鉴2D卷积的优点，做特征提取比较好，但由于遮挡和尺度问题，直接在上面做检测效果不好，需要结合BEV来做检测，所以现在一般是深度图做特征提取，BEV上做检测。
 
 ## 3.2.1.2 3D目标检测的检测器
 
@@ -232,6 +220,13 @@ detection. In: CVPR \
 3d classification and segmentation. In: CVPR \
 [12] Lang A. H., Vora S., Caesar H., Zhou L., Yang J., Beijbom O. (2019) Pointpillars: Fast
 encoders for object detection from point clouds. In: CVPR \
+[13] ewley A., Sun P., Mensink T., Anguelov D., Sminchisescu C. (2020) Range conditioned dilated convolutions for scale invariant 3d object detection. arXiv preprint
+arXiv:200509927 \
+[14] Chai Y., Sun P., Ngiam J., Wang W., Caine B., Vasudevan V., Zhang X., Anguelov
+D. (2021) To the point: Efficient 3d object detection in the range image with graph
+convolution kernels. In: CVPR \
+[15] Fan L., Xiong X., Wang F., Wang N., Zhang Z. (2021) Rangedet: In defense of range
+view for lidar-based 3d object detection. In: ICCV \
 
 
 
