@@ -1,7 +1,7 @@
 
 # 3.2.1 基于LiDAR的3D目标检测
 
-在本节中，我们将介绍基于LiDAR点云数据、深度图的3D对象检测方法，包含数据表示和检测器两方面。数据表示分为基于点、网格、体素、深度图的不同方法。检测器分为基于锚、无锚以及相关辅助的方法，以下时间轴将较为经典的算法做了个列举。
+在本节中，我们将介绍基于LiDAR点云数据、深度图的3D对象检测方法，包含数据表示和学习对象两方面。数据表示分为基于点、网格、体素、深度图的不同方法。检测器分为基于锚、无锚以及相关辅助的方法，以下时间轴将较为经典的算法做了个列举。
 
 <div align=center>
 <img src="./imgs/3.2.1.1.jpg" width="800" height="160">
@@ -124,73 +124,58 @@
 
 深度视图由于可以借鉴2D卷积的优点，做特征提取比较好，但由于遮挡和尺度问题，直接在上面做检测效果不好，需要结合BEV来做检测，所以现在一般是深度图做特征提取，BEV上做检测。
 
-## 3.2.1.2 3D目标检测的检测器
+## 3.2.1.2 3D目标检测的学习对象
 
 3D目标检测的学习目标主要是针对小目标（相比检测范围，目标太小），另一方面是由于点云的稀疏性，如何准确估计其目标的中心和尺寸也是一个长期挑战。
 
-1、Anchor-based方法
+### 一、Anchor-based方法
 
-anchor是预定义的长方体，具有固定的形状，可以放置在3D空间中。3D目标可以基于正anchor进行预测，这些正anchor与GT的IoU最大。anchor-based的3D目标检测方法一般是从鸟瞰图上检测3D目标，将3D anchor放置在BEV特征图的每个网格单元上进行。3D anchor通常对于每个类别都有一个固定的尺寸，因为同一类别的目标有相似的大小。
+Anchor是预定义的固定矩形体，可以放置在3D空间中，3D目标可以基于Anchor与GT的IoU最大的正样例进行预测。Anchor-based的3D目标检测方法一般是从鸟瞰图上检测3D目标，将3D Anchor放置在BEV特征图的每个网格单元上进行。3D Anchor通常对于每个类别都有一个固定的尺寸，因为同一类别的目标有相似的大小。
 
-anchor-based的损失函数包括了分类损失、回归损失、偏航角损失等。分类损失常用的是二值交叉熵、Focal loss，回归则是SmoothL1，航向角需要注意使用bin-based航向估计较好。除了这些单独的损失函数外，将整个3D目标作为整体去考虑，也有使用IoU loss的，再辅以corner loss，让3D目标的检测更加稳定。
+Anchor-based的损失函数包括了分类损失、回归损失、偏航角损失等。分类损失常用的是二值交叉熵、Focal loss，回归则是SmoothL1，航向角需要注意使用bin-based航向估计较好。除了这些单独的损失函数外，将整个3D目标作为整体去考虑，也有使用IoU loss的，再辅以Corner loss，让3D目标的检测更加稳定。
 
-下面是anchor-based方法的示意图和主要目标损失函数：
+下面是anchor-based方法的示意图：
 
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9y1PiafqMUep0yyYibVh8Q7wib4KrS1EEImhzrBsznHPlBnjicmBI4ibzjTFw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 Anchor-based方法示意图" width="600" height="200" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图10. Anchor-based方法示意图</div>
-</center>
+<div align=center>
+<img src="./imgs/3.2.1.10.jpg" width="500" height="150">
+</div>
+<div align=center> 图6. Anchor-based方法学习对象</div>
 
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9yZJ9b3YZNlzpslWNzy8VXR9V2ILvSt406y9zNTSI0iaxicqyVurzqgNKw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 基于Range的3D目标检测" width="500" height="400" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图11. anchor-based方法目标损失函数</div>
-</center>
+### 二、Anchor-free方法
 
+<div align=center>
+<img src="./imgs/3.2.1.12.jpg" width="500" height="150">
+</div>
+<div align=center> 图7. Anchor-free方法学习对象框架</div>
 
-2、Anchor-free方法
+Anchor-free方法去掉了复杂的anchor设计阶段，可灵活应用于BEV、点视图和深度视图等。没有了anchor，就需要找其它正负样本分配方法。比如基于一些网格（BEV网格单元、体素、柱体）进行分配正负样本，比如PIXOR、CenterPoint等。还有基于点的分配策略，大部分都是先将前景点分割出来，在3D目标内或附近的作为正样本，并学习这些前景点。基于深度的分配主要是将深度像素在3D目标内的作为正样本，并且回归的时候不是以整个3D坐标系统为基础，而是以目标为中心的回归坐标系。DETR提出了一种集合到集合的分配方式，利用匈牙利算法预测结果自动分配到对应的GT。
 
-anchor-free方法去掉了复杂的anchor设计阶段，可灵活应用于BEV、点视图和Range视图等。没有了anchor，就需要找其它正负样本分配方法。比如基于一些网格（BEV网格单元、体素、柱体）进行分配正负样本，比如PIXOR、CenterPoint等。还有基于点的分配策略，大部分都是先将前景点分割出来，在3D目标内或附近的作为正样本，并学习这些前景点。基于Range的分配主要是将Range像素在3D目标内的作为正样本，并且回归的时候不是以整个3D坐标系统为基础，而是以目标为中心的回归坐标系。DETR提出了一种集合到集合的分配方式，利用匈牙利算法预测结果自动分配到对应的GT。
+Anchor-free方法设计灵活，不引入其它先验，学习过程简化了很多，其中基于中心的方法对小目标检测有较大潜力可挖。虽然优点不少，但不可否认，anchor-free方法如何选择合适的正样本来生成预测结果是个问题，相比于anchor-based中使用高IoU正样本，anchor-free可能会选到一些不好的正样本，造成预测结果出现偏差。上图7显示了anchor-free框架，下表5列出此类方法。
 
-anchor-free方法设计灵活，不引入其它先验，学习过程简化了很多，其中基于中心的方法[329]对小目标检测有较大潜力可挖。虽然优点不少，但不可否认，anchor-free方法如何选择合适的正样本来生成预测结果是个问题，相比于anchor-based中使用高IoU正样本，anchor-free可能会选到一些不好的正样本，造成预测结果出现偏差。
+<div align=center>
+<img src="./imgs/3.2.1.13.jpg" width="400" height="200">
+</div>
+<div align=center> 表5. Anchor-free方法学习对象方法</div>
 
-下面显示了anchor-free方法和一些里程碑方法。
+### 三、利用辅助任务的3D目标检测
 
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9ycCniatUBic4ByVHApTYDhWZp0licw49n4Mib7Nib6znOsPjNzTILxpqGkSw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 Anchor-based方法示意图" width="500" height="400" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图11. Anchor-based方法示意图</div>
-</center>
-
-3、利用辅助任务的3D目标检测
 利用辅助任务来增强3D目标的空间特征，并能对3D目标检测提供一些隐性的指导。常用的辅助任务包括：语义分割、IoU分支预测、目标形状补全、部件识别。
 
-<center>
-<img src="https://mmbiz.qpic.cn/mmbiz_png/VnDXQzNf28iaRiaT4sqUWtIH8Fm57UibR9ytHbOavYR0SOPa6HRv7v9ZU70x6bReIkVChV6mXKTWm2QG8IKHe6jWg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1" alt="1.1.1.1 利用辅助任务的3D目标检测" width="500" height="180" >
-<br>
-<div style="color:orange; border-bottom: 1px solid #d9d9d7;
-display: inline-block;
-color: #999;
-padding: 2px;">图11. 利用辅助任务的3D目标检测</div>
-</center>
+#### （一）语义分割
 
-语义分割。前景分割可以提供目标的位置隐含信息；利用语义上下文知识可以增强空间特征；语义分割可以作为预处理方法，过滤背景样本，提升3D检测效率。
+    前景分割可以提供目标的位置隐含信息；利用语义上下文知识可以增强空间特征；语义分割可以作为预处理方法，过滤背景样本，提升3D检测效率。
 
-IoU预测分支可以辅助校正目标的置信度，比如预测置信度可以用分类置信度和IoU值的乘积来表示。经过IoU分支的校正，更容易选择高质量的3D目标作为最终预测结果。
+#### （二）IoU预测分支
 
-形状补全，因为点云具有稀疏性，远处的目标只能接收几个点，因此从稀疏点云中补全目标形状可以为后面的检测提供帮助。
+    该分支可以辅助校正目标的置信度，比如预测置信度可以用分类置信度和IoU值的乘积来表示。经过IoU分支的校正，更容易选择高质量的3D目标作为最终预测结果。
 
-识别目标内部的零部件有助于3D目标检测，部件可以揭示细粒度3D信息。
+#### （三）目标形状补全
+
+    因为点云具有稀疏性，远处的目标只能接收几个点，因此从稀疏点云中补全目标形状可以为后面的检测提供帮助。
+
+#### （四）识别目标内部的零部件
+
+    有助于3D目标检测，部件可以揭示细粒度3D信息
 
 除此之外，还有一些比如场景流估计可以识别静态和动态目标，可以在点云序列中跟踪同一个3D目标，可以得到该目标更准确的估计。
 
