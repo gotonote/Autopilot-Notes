@@ -87,7 +87,7 @@ CaDDN 网络尝试结合以上方法的长处，整体网络同时训练深度�
 ### 一、Pseudo-LiDAR[8]
 
 <div align=center>
-<img src="./imgs/3.2.2.9.jpg" width="400" height="100">
+<img src="./imgs/3.2.2.9.jpg" width="800" height="120">
 </div>
 <div align=center> 图9. Pseudo-LiDAR </div>
 
