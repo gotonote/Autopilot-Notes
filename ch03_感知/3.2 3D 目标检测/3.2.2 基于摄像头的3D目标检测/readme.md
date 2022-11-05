@@ -1,7 +1,7 @@
 # 3.2.2 基于摄像头的3D目标检测
 
 <div align=center>
-<img src="./imgs/3.2.2.1.jpg" width="1000" height="160">
+<img src="./imgs/3.2.2.1.jpg" width="1000" height="200">
 </div>
 <div align=center> 图1. 基于相机的3D对象检测进展时间轴 </div>
 
