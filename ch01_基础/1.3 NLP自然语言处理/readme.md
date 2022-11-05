@@ -4,9 +4,9 @@ seq2seq(Sequence to Sequence)是一种输入不定长序列，产生不定长序
 译，输入一段不定长的源语言文字（如中文），而产生一段不定长的目标语言文字（如英文）。
 
 <div align=center>
-<video id="video" controls="" autoplay="" preload="none" poster="">
-<source id="mp4" src="./imgs/1.3.1.mp4" type="video/mp4">
-</videos>
+
+![](./imgs/1.3.1.gif)
+
 </div>
 
 seq2seq模型通常会选用编码器解码器（Encoder-Decoder）架构，编码器接受不定长输入并产生一定大小的
