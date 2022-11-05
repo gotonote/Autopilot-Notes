@@ -1,7 +1,7 @@
 # 3.2.2 基于摄像头的3D目标检测
 
 <div align=center>
-<img src="./imgs/3.2.2.1.jpg" width="800" height="160">
+<img src="./imgs/3.2.2.1.jpg" width="1000" height="160">
 </div>
 <div align=center> 图1. 基于相机的3D对象检测进展时间轴 </div>
 
@@ -111,6 +111,69 @@ Pseudo-LiDAR++通过改进立体深度估计，为伪激光雷达框架提供了
     
 E2E Pseudo-LiDAR是发表在CVPR2020的单目目标检测模型，主要创新点：端到端！！！伪激光雷达（PL）的引入导致基于激光雷达传感器的方法与基于廉价立体相机的方法之间的精度差距大幅缩小，PL通过将2D深度图输出转换为3D点云输入，将用于3D深度估计的深度神经网络与用于3D目标检测的深度网络相结合。然而，到目前为止，这两个网络必须分别进行训练。E2E Pseudo-LiDAR介绍了一种基于可微表示变化（CoR）模块的新框架，该框架允许对整个PL管道进行端到端的训练。生成的框架与这两项任务的SOTA网络兼容，并与PointRCNN结合，在所有基准上均优于PL，KITTI 3D目标检测。
 
+## 3.2.2.3 基于双目数据的3D检测
+
+### 一、Object-Centric Stereo Matching for 3D Object Detection[11]
+
+<div align=center>
+<img src="./imgs/3.2.2.12.jpg" width="600" height="200">
+</div>
+<div align=center> 图12. Object-Centric Stereo Matching </div>
+
+其实上述的E2E Pseudo-LiDAR、Pseudo-LiDAR++也基本算基于双目数据的检测网络，双目3D检测一般是生成视差图或者深度图然后进一步送到3D检测器中，也有直接利用左右图像几何约束直接完成3D预测，现在再聊一下其它基于Stereo的强相关任务！Object-Centric Stereo Matching for 3D Object Detection是ICRA2020的一篇paper，论文提出当前用于立体3D目标检测的方法，无需修改就可以用PSMNet立体匹配网络，估计的视差转换为3D点云，然后馈入基于激光雷达的3D目标检测器。现有立体匹配网络的问题在于，视差估计而不是为3D目标检测而设计的，目标点云的形状和准确性不是重点。由于背景和前景的点云是联合估计的，立体匹配网络通常会在目标边界处的深度估计不准确，该估计被称为条纹（streaking），而且现有网络在其损失函数中还计算视差而不是估计的目标点云位置的惩罚。在这里论文提出了一种二维边框关联（association）和以目标为中心的立体匹配方法，仅估计感兴趣目标的视差。下图12是整个算法的流程图：首先，一个2D检测器在立体图像Il和Ir中生成2D边框。接下来，边框关联算法会在两个图像之间的目标检测进行匹配，比如结构相似索引测度。每个匹配的检测对都传递到以目标为中心的立体网络中，该网络将为每个目标生成视差图和实例分割掩码（基准的视差估计算法是PSMNet）。它们一起形成仅包含感兴趣目标的视差图。最后，视差图转换为点云，任何基于激光雷达的3D对目标检测网络都可以用该点云来预测3D边框。
+
+### 二、Stereo R-CNN[12]
+
+<div align=center>
+<img src="./imgs/3.2.2.13.jpg" width="600" height="200">
+</div>
+<div align=center> 图13. Stereo R-CNN </div>
+
+Stereo R-CNN充分用立体图像的稀疏和密集、语义和几何信息来实现自动驾驶的3D目标检测方法。Stereo R-CNN的方法扩展Faster R-CNN到立体视觉输入，同时检测和关联左右图像的目标。在立体视觉区域提议网络（RPN）之后，该方法添加额外的分支预测稀疏的关键点、视点和目标尺寸，将其与2D左右框组合计算出粗略的3D目标边框。然后，左右RoI通过基于区域的光度对齐来恢复准确的3D边框。该方法不需要输入深度和3D位置来监督学习，但好过所有现有的完全基于图像的监督学习方法。
+
+### 三、IDA-3D[13]
+
+<div align=center>
+<img src="./imgs/3.2.2.14.jpg" width="600" height="300">
+</div>
+<div align=center> 图14. IDA-3D </div>
+
+IDA-3D提出了一种基于立体视觉的三维目标检测方法，该方法不依赖于激光雷达数据作为输入，也不依赖于作为训练的监督，而只以带有相应标注的三维边界框的RGB图像作为训练数据。由于目标的深度估计是影响三维目标检测性能的关键因素，本文介绍了一个实例深度提取（IDA）模块，该模块通过实例深度感知、视差自适应和匹配代价重加权，准确地预测出三维包围盒中心的深度。此外，模型是一个端到端的学习框架，不需要多阶段或后处理算法。
+
+### 四、Disp R-CNN[14]
+
+<div align=center>
+<img src="./imgs/3.2.2.15.jpg" width="600" height="200">
+</div>
+<div align=center> 图15. Disp R-CNN </div>
+
+Disp R-CNN提出在整个图像上计算视差图比较昂贵，并且不能利用特定类别的先验。相反，论文设计了一个实例视差估计网络 iDispNet，它仅仅为感兴趣的目标区域里的像素预测视差，并且学习类别特定的形状先验，以便更准确的估计视差。为了解决训练中视差标注不足的问题，提出在不需要雷达点云的情况下，使用统计形状模型生成密集视差伪真值，这使得我们的系统具有更广泛的适用性。实验表明，在物体形状先验的指导下，估计的实例视差捕获了物体边界的平滑形状和锋利边缘，而且比完整帧的对应值更准确。通过实例级视差估计的设计，在视差估计过程中减少了输入和输出像素的数量，减少了代价量搜索的范围，从而减少了整体三维检测框架的运行时间。
+
+### 五、DSGN[15]
+
+<div align=center>
+<img src="./imgs/3.2.2.16.jpg" width="600" height="200">
+</div>
+<div align=center> 图16. DSGN </div>
+
+深度立体几何网络(DSGN)，通过在一种可微分的体积表示（3D几何体）上检测3D目标来显著缩小这一差距，该方法有效地编码了3D规则空间的3D几何结构。通过这种表示，可以同时学习深度信息和语义线索。论文首次提供了一种简单有效的基于立体的单级三维检测pipeline，以端到端学习的方式联合估计深度和检测三维物体。论文主要思路如下：
+
+- 为了弥补2D图像和3D空间之间的鸿沟，在平面扫描体中建立立体对应，然后将其转换为3D几何体，以便能够同时编码3D几何和语义线索，以便在3D规则空间中进行预测；
+
+- 设计了一个端到端的pipeline，用于提取像素级特征用于立体匹配，高层特征用于目标检测。该网络联合估计场景深度和检测3D世界中的3D对象，使许多实际应用成为可能；
+
+- 简单且完全可区分的网络性能优于官方Kitti排行榜上的所有其他立体式3D目标检测器(AP高出10%)；
+    
+### 六、DSGN++[16]
+   
+<div align=center>
+<img src="./imgs/3.2.2.17.jpg" width="600" height="200">
+</div>
+<div align=center> 图17. DSGN++ </div>
+
+DSGN++完善了立体建模，并提出了高级版本DSGN++，旨在从三个主要方面增强整个2D到3D pipelines的有效信息流。首先，为了有效地将2D信息提升到立体体积，提出了深度方向平面扫描（DPS），允许更密集的连接并提取深度引导特征。第二，为了抓住不同间隔的特征，我们提出了一种新的立体volume——双视立体volume（DSV），它集成了前视图和俯视特征，并在摄像机截头体中重建子体素深度。第三，由于前景区域在3D空间中的主导地位降低，论文提出了一种多模式数据编辑策略：立体激光雷达复制粘贴，这确保了跨模式对齐并提高了数据效率。在KITTI基准上的各种模态设置中的广泛实验表明，DSGN++方法在所有类别中都始终优于其他基于camera的3D检测器。
+
+
 
 ## 参考文献
 
@@ -133,3 +196,15 @@ E2E Pseudo-LiDAR是发表在CVPR2020的单目目标检测模型，主要创新�
 [9] You Y ,  Wang Y ,  Chao W L , et al. Pseudo-LiDAR++: Accurate Depth for 3D Object Detection in Autonomous Driving[C]// International Conference on Learning Representations. 2020.
 
 [10] Hariharan B ,  Garg D ,  Weinberger K Q , et al. End-to-End Pseudo-LiDAR for Image-Based 3D Object Detection: IEEE, 10.1109/CVPR42600.2020.00592[P]. 2020.
+
+[11] Alex D. Pon, Jason Ku, Chengyao Li, Steven L. Waslander. Object-Centric Stereo Matching for 3D Object Detection. ICRA 2020: 2020 IEEE International Conference on Robotics and Automation
+
+[12] Li Peiliang, Chen Xiaozhi, Shen Shaojie. Stereo R-CNN based 3D Object Detection for Autonomous Driving},CVPR.2019.
+
+[13] Peng Wanli, Pan Hao, Liu He, Sun Yi. IDA-3D: Instance-Depth-Aware 3D Object Detection From Stereo Vision for Autonomous Driving. CVPR2020.
+
+[14] Sun Jiaming, Chen Linghao, Xie Yiming, Zhang Siyu, Jiang Qinhong, Zhou Xiaowei, Bao Hujun. Disp R-CNN: Stereo 3D Object Detection via Shape Prior Guided Instance Disparity Estimation. CVPR2020.
+
+[15] Chen Y ,  Huang S ,  Liu S , et al. DSGN: Deep Stereo Geometry Network for 3D Object Detection. CVPR2020.
+
+[16] Chen Y ,  Huang S ,  Liu S , et al. DSGN++: Exploiting Visual-Spatial Relation for Stereo-based 3D Detectors[J]. 2022.
