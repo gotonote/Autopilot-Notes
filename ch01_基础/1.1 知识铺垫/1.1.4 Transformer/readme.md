@@ -55,6 +55,26 @@ Value_ = Dict[Query]  # 用Query去匹配Key以查询Value，
 </div>
 <div align=center>图4. QKV计算过程 </div>
 
+当每个词向量（或特征向量）都有了对应的查询向量、键向量和值向量之后，就可以进行如下的自注意力机
+制。比如计算第一个词向量（对应单词Thinking）的特征向量:
+
+1. 用该单词的查询向量$q_1$与所有单词对应的键向量$q_1,q_2,q_3,...q_n$做点乘，分别得到每个单词的查询得分$s_1,s_2,s_3,...s_n$；
+2. 用$\sqrt{d_k}$规范化得分（$d_k$代表查询向量的长度），并将规范化后的得分作为一个向量执行$softmax$作为权重；
+3. 利用得到的权重加权求和，即为该词向量对应的输出向量。
+
+对应示例如下图5所示：
+
+<div align=center>
+<img src="./imgs/1.1.4.5.jpg" width="400" height="300">
+</div>
+<div align=center>图5. 自注意力机制过程 </div>
+
+将所有输入的词向量堆叠成矩阵，则可以简写成如下的矩阵形式：
+
+<div align=center>
+<img src="./imgs/1.1.4.6.jpg" width="400" height="150">
+</div>
+<div align=center>图6. 自注意力机制矩阵表示 </div>
 
 
 
