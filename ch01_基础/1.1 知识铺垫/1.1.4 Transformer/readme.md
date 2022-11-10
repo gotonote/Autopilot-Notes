@@ -108,7 +108,7 @@ Value_ = Dict[Query]  # 用Query去匹配Key以查询Value，
 Transformer抛弃了天然具有位置信息的RNN，便丢失了序列本身的位置信息（比如一个单词在句子中的位置），因此需要借助其他手段来加强输入的数据，以引入位置信息。这里Transformer采用的是一种位置编码（Positional Encoding）的技术。用一个与词向量长度相等的向量表示其所在的位置（或次序），并与词向量逐元素相加，从而将位置信息编码到词向量。
 
 <div align=center>
-<img src="./imgs/1.1.4.10.jpg" width="400" height="200">
+<img src="./imgs/1.1.4.10.jpg" width="400" height="150">
 </div>
 <div align=center>图10. 位置编码 </div>
 
