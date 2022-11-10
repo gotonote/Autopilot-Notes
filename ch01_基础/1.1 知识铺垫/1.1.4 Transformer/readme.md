@@ -84,6 +84,75 @@ Value_ = Dict[Query]  # 用Query去匹配Key以查询Value，
 
 (2) 使注意力模块能拥有更复杂的表示子空间（representation subspaces）;
 
+<div align=center>
+<img src="./imgs/1.1.4.7.jpg" width="400" height="150">
+</div>
+<div align=center>图7. 多头注意力 </div>
+
+为了融合多头提取的特征向量，FFNN也要做出相应的调整，将这些特征向量进行拼接，同时扩大$W^O$权重矩阵的规模。
+
+<div align=center>
+<img src="./imgs/1.1.4.8.jpg" width="400" height="200">
+</div>
+<div align=center>图8. 特征拼接 </div>
+
+完整的多头设计的Transformer编码器如下图9所示，
+
+<div align=center>
+<img src="./imgs/1.1.4.9.jpg" width="400" height="200">
+</div>
+<div align=center>图9. Transformer编码器 </div>
+
+## 1.1.4.4 位置编码
+
+Transformer抛弃了天然具有位置信息的RNN，便丢失了序列本身的位置信息（比如一个单词在句子中的位置），因此需要借助其他手段来加强输入的数据，以引入位置信息。这里Transformer采用的是一种位置编码（Positional Encoding）的技术。用一个与词向量长度相等的向量表示其所在的位置（或次序），并与词向量逐元素相加，从而将位置信息编码到词向量。
+
+<div align=center>
+<img src="./imgs/1.1.4.10.jpg" width="400" height="200">
+</div>
+<div align=center>图10. 位置编码 </div>
+
+论文采用如下的位置编码方案：
+
+$$
+PE_t^{(i)}=
+\begin{cases} 
+sin(w_k\cdot{t}), i = 2k \\
+cos(w_k\cdot{t}), i = 2k+1
+\end{cases}
+$$
 
 
+$$
+w_k = \frac{1}{10000^{2i/d}}
+$$
 
+其中，$PE_t^{(i)}$ 表示第 $t$ 个时间步的位置编码向量的第 $i$ 个元素；$d$ 是位置编码向量的长度，也即词向量的长度。
+
+定义中，三角函数的频率沿着维度逐渐减小，波长形成了$2\pi$到 $10000\cdot{2\pi}$ 的几何级数。
+
+该编码方案的优点如下：
+1. 对于每个时间步，其位置编码向量都是独一无二的；
+2. 编码向量只取决于时间步的序号，与序列长度无关，能够适用于任意长度的序列；
+3. 编码的数值是有界的；
+4. 编码方式是确定的；
+5. 模型更容易关注到相对位置信息, 因为对于任意偏移量 $k$, $PE_{t+k}$ 和 $PE_t$ 都满足一定的线性关系，也即存在某个矩阵 $T^{(k)}$ 可以使 $PE_{t+k}$ = $T^{(k)}\cdot{PE_t}$
+
+## 1.1.4.5 残差设计
+
+与ResNet类似，Transformer也为编码器和解码器引入了残差结构。
+
+<div align=center>
+<img src="./imgs/1.1.4.11.jpg" width="500" height="250">
+</div>
+<div align=center>图11. 残差设计 </div>
+
+无论是自注意模块，还是前馈神经网络、编解码注意力模块，均加入了短连接设计和Normalize，但注意在序列任务中通常是不使用BN的，像论文中就使用了LN来进行规范化。
+
+## 1.1.4.6 贪心解码&束搜索
+
+与CNN等不同，RNN和Transformer在产生一个新的输出时都与先前的输出的有关，因此在产生完整的输出时会有不同的方案。
+
+最简单的方案是贪心解码（Greedy Decoding），也即每次选取概率最高的一项作为新的输出；
+
+复杂点的方案则是束搜索（Beam Search），每次选取概率较高的$k$个候选项，分别假设本次输出是某一候选项来预测下一输出（共 $k*k$ 个），然后从中选取概率较高的 $k$ 个作为新的候选项，以此类推，预测的代价将是贪心解码的 $k$ 倍，但也更为合理和准确。
