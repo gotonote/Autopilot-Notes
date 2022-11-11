@@ -65,14 +65,14 @@ Value_ = Dict[Query]  # 用Query去匹配Key以查询Value，
 对应示例如下图5所示：
 
 <div align=center>
-<img src="./imgs/1.1.4.5.jpg" width="400" height="300">
+<img src="./imgs/1.1.4.5.jpg" width="600" height="500">
 </div>
 <div align=center>图5. 自注意力机制过程 </div>
 
 将所有输入的词向量堆叠成矩阵，则可以简写成如下的矩阵形式：
 
 <div align=center>
-<img src="./imgs/1.1.4.6.jpg" width="400" height="150">
+<img src="./imgs/1.1.4.6.jpg" width="600" height="250">
 </div>
 <div align=center>图6. 自注意力机制矩阵表示 </div>
 
@@ -85,21 +85,21 @@ Value_ = Dict[Query]  # 用Query去匹配Key以查询Value，
 (2) 使注意力模块能拥有更复杂的表示子空间（representation subspaces）;
 
 <div align=center>
-<img src="./imgs/1.1.4.7.jpg" width="400" height="150">
+<img src="./imgs/1.1.4.7.jpg" width="600" height="250">
 </div>
 <div align=center>图7. 多头注意力 </div>
 
 为了融合多头提取的特征向量，FFNN也要做出相应的调整，将这些特征向量进行拼接，同时扩大$W^O$权重矩阵的规模。
 
 <div align=center>
-<img src="./imgs/1.1.4.8.jpg" width="400" height="200">
+<img src="./imgs/1.1.4.8.jpg" width="600" height="300">
 </div>
 <div align=center>图8. 特征拼接 </div>
 
 完整的多头设计的Transformer编码器如下图9所示，
 
 <div align=center>
-<img src="./imgs/1.1.4.9.jpg" width="400" height="200">
+<img src="./imgs/1.1.4.9.jpg" width="600" height="300">
 </div>
 <div align=center>图9. Transformer编码器 </div>
 
@@ -108,7 +108,7 @@ Value_ = Dict[Query]  # 用Query去匹配Key以查询Value，
 Transformer抛弃了天然具有位置信息的RNN，便丢失了序列本身的位置信息（比如一个单词在句子中的位置），因此需要借助其他手段来加强输入的数据，以引入位置信息。这里Transformer采用的是一种位置编码（Positional Encoding）的技术。用一个与词向量长度相等的向量表示其所在的位置（或次序），并与词向量逐元素相加，从而将位置信息编码到词向量。
 
 <div align=center>
-<img src="./imgs/1.1.4.10.jpg" width="400" height="150">
+<img src="./imgs/1.1.4.10.jpg" width="600" height="200">
 </div>
 <div align=center>图10. 位置编码 </div>
 
@@ -143,7 +143,7 @@ $$
 与ResNet类似，Transformer也为编码器和解码器引入了残差结构。
 
 <div align=center>
-<img src="./imgs/1.1.4.11.jpg" width="500" height="250">
+<img src="./imgs/1.1.4.11.jpg" width="600" height="300">
 </div>
 <div align=center>图11. 残差设计 </div>
 
