@@ -1,3 +1,5 @@
 images*/
 *.py
 *.mp4
+*.DS_Store
+*.ttf
