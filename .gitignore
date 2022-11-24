@@ -1,4 +1,5 @@
 images*/
+.DS_Store/
 *.py
 *.mp4
 *.DS_Store
