@@ -64,6 +64,8 @@
 |---- [7.1.1 AVS（Autonomous Visualization System）](./ch07_%E5%B7%A5%E5%85%B7/7.1%20%E5%8F%AF%E8%A7%86%E5%8C%96/7.1.1%20AVS%EF%BC%88Autonomous%20Visualization%20System%EF%BC%89/readme.md) \
 |-- 7.2 仿真 \
 |---- [7.2.1 Carla仿真](./ch07_%E5%B7%A5%E5%85%B7/7.2%20%E4%BB%BF%E7%9C%9F/7.2.1%20Carla%E4%BB%BF%E7%9C%9F/readme.md) \
+|-- 7.3 TensorRT 加速 \
+|-- 7.4 SNPE 加速 \
 **8. 厂商方案** \
 |-- [8.1 特斯拉 AI Day2022](./ch08_%E5%8E%82%E5%95%86%E6%96%B9%E6%A1%88/8.1%20%E7%89%B9%E6%96%AF%E6%8B%89%20AI%20Day2022/README.md) \
 |---- [8.1.1 路径以及运动规划算法](./ch08_%E5%8E%82%E5%95%86%E6%96%B9%E6%A1%88/8.1%20%E7%89%B9%E6%96%AF%E6%8B%89%20AI%20Day2022/8.1.1%20%E8%B7%AF%E5%BE%84%E4%BB%A5%E5%8F%8A%E8%BF%90%E5%8A%A8%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95.md) \
