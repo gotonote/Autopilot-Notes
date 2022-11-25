@@ -66,6 +66,7 @@
 |---- [7.2.1 Carla仿真](./ch07_%E5%B7%A5%E5%85%B7/7.2%20%E4%BB%BF%E7%9C%9F/7.2.1%20Carla%E4%BB%BF%E7%9C%9F/readme.md) \
 |-- [7.3 TensorRT 加速](./ch07_%E5%B7%A5%E5%85%B7/7.3%20TensorRT%E5%8A%A0%E9%80%9F/readme.md) \
 |---- [7.3.1 TensorRT安装配置](./ch07_%E5%B7%A5%E5%85%B7/7.3%20TensorRT%E5%8A%A0%E9%80%9F/7.3.1%20TensorRT%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.md) \
+|---- [7.3.2 TensorRT加速原理](./ch07_%E5%B7%A5%E5%85%B7/7.3%20TensorRT%E5%8A%A0%E9%80%9F/7.3.2%20TensorRT%E5%8A%A0%E9%80%9F%E5%8E%9F%E7%90%86.md) \
 |-- 7.4 SNPE 加速 \
 **8. 厂商方案** \
 |-- [8.1 特斯拉 AI Day2022](./ch08_%E5%8E%82%E5%95%86%E6%96%B9%E6%A1%88/8.1%20%E7%89%B9%E6%96%AF%E6%8B%89%20AI%20Day2022/README.md) \
