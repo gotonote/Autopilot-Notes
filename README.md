@@ -64,7 +64,7 @@
 |---- [7.1.1 AVS（Autonomous Visualization System）](./ch07_%E5%B7%A5%E5%85%B7/7.1%20%E5%8F%AF%E8%A7%86%E5%8C%96/7.1.1%20AVS%EF%BC%88Autonomous%20Visualization%20System%EF%BC%89/readme.md) \
 |-- 7.2 仿真 \
 |---- [7.2.1 Carla仿真](./ch07_%E5%B7%A5%E5%85%B7/7.2%20%E4%BB%BF%E7%9C%9F/7.2.1%20Carla%E4%BB%BF%E7%9C%9F/readme.md) \
-|-- 7.3 TensorRT 加速 \
+|-- [7.3 TensorRT 加速](./ch07_%E5%B7%A5%E5%85%B7/7.3%20TensorRT%E5%8A%A0%E9%80%9F/readme.md) \
 |---- [7.3.1 TensorRT安装配置](./ch07_%E5%B7%A5%E5%85%B7/7.3%20TensorRT%E5%8A%A0%E9%80%9F/7.3.1%20TensorRT%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE.md) \
 |-- 7.4 SNPE 加速 \
 **8. 厂商方案** \
