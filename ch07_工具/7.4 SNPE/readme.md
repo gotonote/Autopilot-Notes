@@ -4,7 +4,7 @@ SNPE（Snapdragon Neural Processing Engine），是一个在高通骁龙系列�
 
 - 端侧网络推理，支持的后端包括骁龙CPU，Adreno GPU以及Hexagon DSP；
 - x86 Ubuntu Linux主机端调试，仅支持CPU；
-- 多种训练框架格式转换到SNPE DLC（Deep Learning Containe）格式用于模型推理，支持Caffe，Caffe2，ONNX，TensorFlow和PyTorch；
+- 多种训练框架格式转换到SNPE DLC（Deep Learning Container）格式用于模型推理，支持Caffe，Caffe2，ONNX，TensorFlow和PyTorch；
 - 模型定点量化功能，主要用于Hexagon DSP相关后端的推理；
 - 针对模型推理阶段的分析和调试工具；
 - 可通过C++/Java接口，将神经网络推理功能集成到可执行程序或Android APP中。
