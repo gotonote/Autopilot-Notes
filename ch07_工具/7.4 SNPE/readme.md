@@ -11,7 +11,10 @@ SNPE（Snapdragon Neural Processing Engine），是一个在高通骁龙系列�
 
 下图展示了基于SNPE部署网络的workflow：
 
-![SNPE workflow](./imgs/7.4.1-1.png)
+<div align=center>
+<img src="./imgs/7.4.1.jpg" width="600" height="300">
+</div>
+<div align=center>图1. SNPE workflow </div>
 
 该workflow可以简单概括为以下步骤：首先，选择一个SNPE支持转换模型的框架，经过训练/测试等步骤后，输出待部署的模型；然后，将该模型转换到SNPE推理所需的DLC模式，如果需要在DSP/AIP后端硬件上进行推理，则需要额外对模型进行一次量化，或在推理阶段选择在线量化；最后，在运行时指定预设的后端，给模型输入数据，进行网络推理。
 
