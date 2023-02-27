@@ -66,6 +66,7 @@
 |-- [5.3 模型控制预测（MPC）](./ch05_%E6%8E%A7%E5%88%B6/5.3%20%E6%A8%A1%E5%9E%8B%E6%8E%A7%E5%88%B6%E9%A2%84%E6%B5%8B(MPC).md) \
 **6. 产品** \
 |-- [6.1 ADAS](./ch06_产品/6.1%20ADAS/README.md) \
+|-- [6.2 DMS](./ch06_%E4%BA%A7%E5%93%81/6.2%20DMS/README.md) \
 **7. 工具** \
 |-- 7.1 可视化 \
 |---- [7.1.1 AVS（Autonomous Visualization System）](./ch07_%E5%B7%A5%E5%85%B7/7.1%20%E5%8F%AF%E8%A7%86%E5%8C%96/7.1.1%20AVS%EF%BC%88Autonomous%20Visualization%20System%EF%BC%89/readme.md) \
