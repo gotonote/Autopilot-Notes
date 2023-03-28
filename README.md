@@ -24,6 +24,7 @@
 |---- [1.1.4 Transformer](./ch01_%E5%9F%BA%E7%A1%80/1.1%20%E7%9F%A5%E8%AF%86%E9%93%BA%E5%9E%AB/1.1.4%20Transformer/readme.md) \
 |-- 1.2 数据集 \
 |---- [1.2.1 Argoverse](./ch01_%E5%9F%BA%E7%A1%80/1.2%20%E6%95%B0%E6%8D%AE%E9%9B%86/1.2.1%20Argoverse.md) \
+|---- [1.2.2 nuScenes](./ch01_%E5%9F%BA%E7%A1%80/1.2%20%E6%95%B0%E6%8D%AE%E9%9B%86/1.2.2%20nuScenes.md) \
 |-- [1.3 NLP自然语言处理](./ch01_%E5%9F%BA%E7%A1%80/1.3%20NLP%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/readme.md) \
 |-- [1.4 强化学习](./ch01_%E5%9F%BA%E7%A1%80/1.4%20%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/) \
 |-- 1.5 神经网络结构搜索(NAS) \
