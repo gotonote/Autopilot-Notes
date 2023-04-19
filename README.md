@@ -48,6 +48,7 @@
 |---- [3.2.1 基于LiDAR的3D目标检测](./ch03_%E6%84%9F%E7%9F%A5/3.2%203D%20%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/3.2.1%20%E5%9F%BA%E4%BA%8ELiDAR%E7%9A%843D%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/readme.md) \
 |---- [3.2.2 基于摄像头的3D目标检测](./ch03_%E6%84%9F%E7%9F%A5/3.2%203D%20%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/3.2.2%20%E5%9F%BA%E4%BA%8E%E6%91%84%E5%83%8F%E5%A4%B4%E7%9A%843D%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/readme.md) \
 |-- [3.3 BEV鸟瞰图](./ch03_%E6%84%9F%E7%9F%A5/3.3%20BEV%E9%B8%9F%E7%9E%B0%E5%9B%BE/README.md) \
+|---- [3.3.2 Occupany Network](./ch03_%E6%84%9F%E7%9F%A5/3.3%20BEV%E9%B8%9F%E7%9E%B0%E5%9B%BE/3.3.2%20Occupany%20Network.md) \
 |-- [3.4 定位](./ch03_%E6%84%9F%E7%9F%A5/3.4%20%E5%AE%9A%E4%BD%8D/readme.md) \
 |-- [3.5 传感器标定](./ch03_%E6%84%9F%E7%9F%A5/3.5%20%E4%BC%A0%E6%84%9F%E5%99%A8%E6%A0%87%E5%AE%9A/readme.md) \
 |---- 3.5.1 内参标定 \
