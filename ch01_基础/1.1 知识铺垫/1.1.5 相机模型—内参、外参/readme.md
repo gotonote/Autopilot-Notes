@@ -19,7 +19,7 @@
 
 世界坐标系： $O-X-Y-Z$
 
-在世界坐标系下的点 $P[X,Y,Z]^T$ ，通过相机坐标系下的光心$O$投影到物理成像平面上的 $P'[X',Y',Z']^T$ ，对应到像素坐标系下的 $[u,v]^T$ 。
+在世界坐标系下的点 $P[X,Y,Z]^T$ ，通过相机坐标系下的光心 $O$ 投影到物理成像平面上的 $P'[X',Y',Z']^T$ ，对应到像素坐标系下的 $[u,v]^T$ 。
 
 由相似三角形可以得到：
 
@@ -38,7 +38,7 @@ $$\begin{align} \frac Z f& = \frac X {X'}=\frac Y {Y'} \\ X'&=f\frac X Z \\ Y'&=
 
 从物理成像坐标系到像素坐标系之前，相差了一个**缩放**和**平移**。缩放是因为两个坐标系之前的表示的单位长度不一致，平移是因为两个坐标系的原点不一致。
 
-假设，像素坐标在$u$方向上缩放了 $\alpha$ 倍，在 $v$ 方向上缩放了 $\beta$ 倍，同时，原点平移了 $[c_x,c_y]^T$ 。那么点 $P'[X',Y',Z']^T$ 与像素坐标系下 $[u,v]^T$ 的关系为：
+假设，像素坐标在 $u$ 方向上缩放了 $\alpha$ 倍，在 $v$ 方向上缩放了 $\beta$ 倍，同时，原点平移了 $[c_x,c_y]^T$ 。那么点 $P'[X',Y',Z']^T$ 与像素坐标系下 $[u,v]^T$ 的关系为：
 
 $$\begin{cases} u&=\alpha X'+c_x \\ v&=\beta Y'+c_y \\ \end{cases} \\ \\ \Downarrow \\ f_x = \alpha f \\ f_y= \beta f \\ \Downarrow \\ \begin{cases} u&=f_x \frac XZ + c_x \\ v&=f_y \frac YZ + c_y \\ \end{cases} \\$$
 
@@ -46,6 +46,6 @@ $$\begin{cases} u&=\alpha X'+c_x \\ v&=\beta Y'+c_y \\ \end{cases} \\ \\ \Downar
 
 $$\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \frac 1Z \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \frac1Z \boldsymbol {KP} \\ \Downarrow \\ Z\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \boldsymbol {KP} \\$$
 
-把中间的量组成的矩阵称为相机的**内参矩阵**（Camera Intrinsics）$\boldsymbol K$ 。
+把中间的量组成的矩阵称为相机的**内参矩阵**（Camera Intrinsics）$\boldsymbol{K}$ 。
 
 
