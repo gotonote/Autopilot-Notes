@@ -46,6 +46,6 @@ $$\begin{cases} u&=\alpha X'+c_x \\ v&=\beta Y'+c_y \\ \end{cases} \\ \\ \Downar
 
 $$\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \frac 1Z \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \frac1Z \boldsymbol {KP} \\ \Downarrow \\ Z\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \boldsymbol {KP} \\$$
 
-把中间的量组成的矩阵称为相机的**内参矩阵**（Camera Intrinsics）$\boldsymbol{K}$ 。
+把中间的量组成的矩阵称为相机的**内参矩阵**（Camera Intrinsics） $\boldsymbol K$ 。
 
 
