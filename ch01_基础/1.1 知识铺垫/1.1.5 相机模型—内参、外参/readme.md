@@ -23,7 +23,9 @@
 
 由相似三角形可以得到：
 
-$$\frac Z f = -\frac X {X'}=-\frac Y {Y'}$$
+$$
+\frac Z f = -\frac X {X'}=-\frac Y {Y'}
+$$
 
 带负号是因为小孔成像成的是倒像。为了简化模型，可以把物理成像平面看作为放到了相机的前方，这样可以直观的认为成立的正像（虚像），如下图2：
 
@@ -34,17 +36,80 @@ $$\frac Z f = -\frac X {X'}=-\frac Y {Y'}$$
 
 可以得到：
 
-$$\begin{align} \frac Z f& = \frac X {X'}=\frac Y {Y'} \\ X'&=f\frac X Z \\ Y'&=f\frac Y Z \end{align}$$
+$$
+\frac Z f = \frac X {X'}=\frac Y {Y'}
+$$
+
+$$
+X'=f\frac X Z
+$$
+
+$$
+Y'=f\frac Y Z
+$$
 
 从物理成像坐标系到像素坐标系之前，相差了一个**缩放**和**平移**。缩放是因为两个坐标系之前的表示的单位长度不一致，平移是因为两个坐标系的原点不一致。
 
 假设，像素坐标在 $u$ 方向上缩放了 $\alpha$ 倍，在 $v$ 方向上缩放了 $\beta$ 倍，同时，原点平移了 $[c_x,c_y]^T$ 。那么点 $P'[X',Y',Z']^T$ 与像素坐标系下 $[u,v]^T$ 的关系为：
 
-$$\begin{cases} u&=\alpha X'+c_x \\ v&=\beta Y'+c_y \\ \end{cases} \\ \\ \Downarrow \\ f_x = \alpha f \\ f_y= \beta f \\ \Downarrow \\ \begin{cases} u&=f_x \frac XZ + c_x \\ v&=f_y \frac YZ + c_y \\ \end{cases} \\$$
+$$
+\begin{cases} 
+u=\alpha X'+c_x \\
+v=\beta Y'+c_y
+\end{cases} 
+$$
+
+$$
+f_x = \alpha f
+$$
+$$
+f_y = \beta f
+$$
+
+$$
+\begin{cases} 
+u=f_x \frac XZ + c_x \\
+v=f_y \frac YZ + c_y
+\end{cases}
+$$
 
 其中，变量的**单位**是 $f \rightarrow mm ; \alpha, \beta \rightarrow 像素/mm; f_x,f_y \rightarrow 像素$。将坐标进行归一化，写成矩阵形式，并对左侧像素坐标进行齐次化，方便后面的运算：
 
-$$\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \frac 1Z \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \frac1Z \boldsymbol {KP} \\ \Downarrow \\ Z\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \boldsymbol {KP} \\$$
+$$
+\begin{bmatrix} 
+u \\ 
+v \\ 
+1 \\ 
+\end{bmatrix} 
+= \frac 1 Z 
+
+\begin{bmatrix} 
+f_x &0 &c_x \\ 
+0 &f_y &c_y \\ 
+0 &0 &1 \\ 
+\end{bmatrix} 
+
+\overset{\triangle}{=} 
+\frac 1 Z 
+\boldsymbol {KP} \\ 
+$$
+
+$$
+Z
+\begin{bmatrix} 
+u \\ 
+v \\ 
+1 \\ 
+\end{bmatrix} = 
+
+\begin{bmatrix} 
+f_x &0 &c_x \\ 
+0 &f_y &c_y \\ 
+0 &0 &1 \\ 
+\end{bmatrix} 
+\overset{\triangle}{=} 
+\boldsymbol {KP} \\
+$$
 
 把中间的量组成的矩阵称为相机的**内参矩阵**（Camera Intrinsics） $\boldsymbol K$ 。
 
@@ -57,11 +122,20 @@ $$\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \frac 1Z \begin{bmatrix} f_x &0 
 
 图像大小 $[w,h]$ ，单位 $pixel$ ；相机焦距 $f$ ，单位 $mm$ ；视场角 $FOV-\alpha$ ，单位弧度；像素单元长度 $\mathrm{d}x,\mathrm{d}y$ ，单位 $mm/pixel$ ；内参 $f_x,f_x $，单位 $pixel$ ：
 
-$$\boldsymbol{f_x=\frac f{\mathrm{d}x}}\\ 
+$$
+\boldsymbol{f_x=\frac f{\mathrm{d}x}}
+$$
 
-\boldsymbol{f_y=\frac f{\mathrm{d}y}} \\ 
+$$
+\boldsymbol{f_y=\frac f{\mathrm{d}y}}
+$$
 
-\boldsymbol{c_x=\frac w2} \ (假设相机主点在图像中央) \\ \boldsymbol{c_y =\frac h2} \ (假设相机主点在图像中央) \\$$
+$$
+\boldsymbol{c_x=\frac w2} \ (假设相机主点在图像中央) $$
+
+$$
+\boldsymbol{c_y =\frac h2} \ (假设相机主点在图像中央)
+$$
 
 ​   $\boldsymbol {f_x}$就相当于用$x$方向的像素数去量化物理焦距$f$；
 
@@ -78,7 +152,17 @@ $$\boldsymbol{f_x=\frac f{\mathrm{d}x}}\\
 
 如成像传感器是 $m\times n(\mu m)$ ，图像尺寸是 $w\times h(pixel)$ ，那么图像像素单元就是
 
-$$\mathrm{d}x=\frac mw(\mu m/pixel)\\ \mathrm{d}y=\frac nh(\mu m/pixel) \\ c_x=\frac w2 \\ c_y =\frac h2$$
+$$
+\mathrm{d}x=\frac mw(\mu m/pixel)
+$$
+
+$$
+\mathrm{d}y=\frac nh(\mu m/pixel)
+$$
+
+$$
+c_x=\frac w2 \\ c_y =\frac h2
+$$
 
 如果 $\mathrm{d}x=\mathrm{d}y$ ，则图像像素单元是一个正方形，此时 $\boldsymbol {f_x=f_y}$ ；
 
@@ -92,21 +176,51 @@ $$\mathrm{d}x=\frac mw(\mu m/pixel)\\ \mathrm{d}y=\frac nh(\mu m/pixel) \\ c_x=\
 
 （参考图3）其中，成像传感器是 $m\times n(\mu m)$ ，图像尺寸是 $w\times h(pixel)$ ，像素单元$x$轴方向长度 $\mathrm{d}x=\frac mw(\mu m/pixel)$ ，可以看到：
 
-$$\begin{align} 
-\tan({\frac {\alpha}2} \cdot \frac {\pi}{180} ) &= \frac {m/2}{f} \\ &\Downarrow \\
-FOV=\alpha &=2\arctan(\frac {m/2}{f}) \cdot \frac {180}{\pi} \tag{1.1} \\ &\Downarrow \\ 
-m &=w\cdot \mathrm{d}x \\ &\Downarrow \\ FOV=\alpha &=2\arctan(\frac {w\cdot \mathrm dx/2}{f}) \cdot \frac {180}{\pi} \\ &\Downarrow \\ f_x &= \frac f{\mathrm dx}\\ &\Downarrow \\ FOV=\alpha &=2\arctan(\frac {w}{2f_x}) \cdot \frac {180}{\pi} \tag{1.2}\\ 
-\end{align}$$
+$$
+\tan({\frac {\alpha}2} \cdot \frac {\pi}{180} ) = \frac {m/2}{f}
+$$
+
+$$
+FOV=\alpha =2\arctan(\frac {m/2}{f}) \cdot \frac {180}{\pi} \tag{1.1}
+$$
+
+$$
+m =w\cdot \mathrm{d}x
+$$
+
+$$
+FOV=\alpha =2\arctan(\frac {w\cdot \mathrm dx/2}{f}) \cdot \frac {180}{\pi}
+$$
+
+$$
+f_x = \frac f{\mathrm dx}
+$$
+
+$$
+FOV=\alpha =2\arctan(\frac {w}{2f_x}) \cdot \frac {180}{\pi} \tag{1.2}\\ 
+$$
 
 如果已知相机传感器尺寸，通过公式 1.1 可以计算出相机的视场角 $FOV$ ；
 
 如果已知相机内参，通过公式 1.2 可以计算出相机的视场角 $FOV$ 。
 
+
+
 #### 3 通过 FOV 计算内参
 
 由公式 1.2，可得：
 
-$$\begin{align} \frac{w}{2f_x} &= \tan(\frac {FOV}{2} \cdot \frac {\pi}{180}) \\ &\Downarrow\\ f_x &= \frac w{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})} \\ f_y &= \frac h{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})} \end{align}$$
+$$
+\frac{w}{2f_x} = \tan(\frac {FOV}{2} \cdot \frac {\pi}{180})
+$$
+
+$$
+f_x = \frac w{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})}
+$$
+
+$$
+f_y = \frac h{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})}
+$$
 
 如果 $\mathrm{d}x=\mathrm{d}y$ ，则图像像素单元是一个正方形，此时 $\boldsymbol {f_x=f_y}$ ； $\boldsymbol {c_x=\frac w2 }$ ； $\\ \boldsymbol {c_y =\frac h2}$ 。
 
