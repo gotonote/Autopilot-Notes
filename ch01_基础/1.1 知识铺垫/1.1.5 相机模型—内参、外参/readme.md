@@ -84,15 +84,19 @@ $$\mathrm{d}x=\frac mw(\mu m/pixel)\\ \mathrm{d}y=\frac nh(\mu m/pixel) \\ c_x=\
 
 如果 $\mathrm{d}x \neq \mathrm{d}y$ ，则图像像素单元是一个矩形，此时 $\boldsymbol {f_x \neq f_y}$ 。
 
-如成像传感器是 $2000\times 1000(\mu m)$ ，图像尺寸是 $1000\times 500(pixel)$ ，那么图像像素单元就是 $\mathrm{d}x=\mathrm{d}y=2(\mu m/pixel)$ ，$c_x=500,c_y=250(pixel)$
+如成像传感器是 $2000\times 1000(\mu m)$ ，图像尺寸是 $1000\times 500(pixel)$ ，那么图像像素单元就是 $\mathrm{d}x=\mathrm{d}y=2(\mu m/pixel)$ ， $c_x=500,c_y=250(pixel)$ 。
 
 #### 2. 求视场角 FOV
 
 > 这里只是求水平方向上的 FOV，垂直方向上的 FOV 求法和水平是一致的。
 
-（参考图3）其中，成像传感器是$m\times n(\mu m)$ ，图像尺寸是 $w\times h(pixel)$ ，像素单元$x$轴方向长度 $\mathrm{d}x=\frac mw(\mu m/pixel)$ ，可以看到：
+（参考图3）其中，成像传感器是 $m\times n(\mu m)$ ，图像尺寸是 $w\times h(pixel)$ ，像素单元$x$轴方向长度 $\mathrm{d}x=\frac mw(\mu m/pixel)$ ，可以看到：
 
-$$\begin{align} \tan({\frac {\alpha}2} \cdot \frac {\pi}{180} ) &= \frac {m/2}{f} \\ &\Downarrow \\ FOV=\alpha &=2\arctan(\frac {m/2}{f}) \cdot \frac {180}{\pi} \tag{1.1} \\ &\Downarrow \\ m &=w\cdot \mathrm{d}x \\ &\Downarrow \\ FOV=\alpha &=2\arctan(\frac {w\cdot \mathrm dx/2}{f}) \cdot \frac {180}{\pi} \\ &\Downarrow \\ f_x &= \frac f{\mathrm dx}\\ &\Downarrow \\ FOV=\alpha &=2\arctan(\frac {w}{2f_x}) \cdot \frac {180}{\pi} \tag{1.2}\\ \end{align}$$
+$$\begin{align} 
+\tan({\frac {\alpha}2} \cdot \frac {\pi}{180} ) &= \frac {m/2}{f} \\ &\Downarrow \\
+FOV=\alpha &=2\arctan(\frac {m/2}{f}) \cdot \frac {180}{\pi} \tag{1.1} \\ &\Downarrow \\ 
+m &=w\cdot \mathrm{d}x \\ &\Downarrow \\ FOV=\alpha &=2\arctan(\frac {w\cdot \mathrm dx/2}{f}) \cdot \frac {180}{\pi} \\ &\Downarrow \\ f_x &= \frac f{\mathrm dx}\\ &\Downarrow \\ FOV=\alpha &=2\arctan(\frac {w}{2f_x}) \cdot \frac {180}{\pi} \tag{1.2}\\ 
+\end{align}$$
 
 如果已知相机传感器尺寸，通过公式 1.1 可以计算出相机的视场角 $FOV$ ；
 
@@ -102,12 +106,9 @@ $$\begin{align} \tan({\frac {\alpha}2} \cdot \frac {\pi}{180} ) &= \frac {m/2}{f
 
 由公式 1.2，可得：
 
-$$ \begin{align} 
-\frac{w}{2f_x} &= \tan(\frac {FOV}{2} \cdot \frac {\pi}{180}) \\ &\Downarrow\\ 
-f_x &= \frac w{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})} \\ 
-f_y &= \frac h{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})} \end{align} $$
+$$\begin{align} \frac{w}{2f_x} &= \tan(\frac {FOV}{2} \cdot \frac {\pi}{180}) \\ &\Downarrow\\ f_x &= \frac w{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})} \\ f_y &= \frac h{2\tan(\frac {FOV}{2} \cdot \frac {\pi}{180})} \end{align}$$
 
-如果 $\mathrm{d}x=\mathrm{d}y$ ，则图像像素单元是一个正方形，此时$\boldsymbol {f_x=f_y}$ ；$\boldsymbol {c_x=\frac w2 }$ ；$\\ \boldsymbol {c_y =\frac h2}$ 。
+如果 $\mathrm{d}x=\mathrm{d}y$ ，则图像像素单元是一个正方形，此时 $\boldsymbol {f_x=f_y}$ ； $\boldsymbol {c_x=\frac w2 }$ ； $\\ \boldsymbol {c_y =\frac h2}$ 。
 
 
 ## 1.1.5.2 外参 (Extrinsics)
