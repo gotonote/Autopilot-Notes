@@ -62,6 +62,7 @@ $$
 $$
 f_x = \alpha f
 $$
+
 $$
 f_y = \beta f
 $$
@@ -76,18 +77,23 @@ $$
 其中，变量的**单位**是 $f \rightarrow mm ; \alpha, \beta \rightarrow 像素/mm; f_x,f_y \rightarrow 像素$。将坐标进行归一化，写成矩阵形式，并对左侧像素坐标进行齐次化，方便后面的运算：
 
 $$
-\begin{bmatrix} 
+\left[
+\begin{matrix}
 u \\ 
 v \\ 
 1 \\ 
-\end{bmatrix} 
+\end{matrix}
+\right]
+
 = \frac 1 Z 
 
-\begin{bmatrix} 
+\left[
+\begin{matrix}
 f_x &0 &c_x \\ 
 0 &f_y &c_y \\ 
 0 &0 &1 \\ 
-\end{bmatrix} 
+\end{matrix}
+\right]
 
 \overset{\triangle}{=} 
 \frac 1 Z 
@@ -96,17 +102,24 @@ $$
 
 $$
 Z
-\begin{bmatrix} 
+\left[
+\begin{matrix}
 u \\ 
 v \\ 
 1 \\ 
-\end{bmatrix} = 
+\end{matrix}
+\right]
 
-\begin{bmatrix} 
+= 
+
+\left[
+\begin{matrix}
 f_x &0 &c_x \\ 
 0 &f_y &c_y \\ 
 0 &0 &1 \\ 
-\end{bmatrix} 
+\end{matrix}
+\right]
+
 \overset{\triangle}{=} 
 \boldsymbol {KP} \\
 $$
@@ -232,17 +245,19 @@ $$
 相机在世界坐标系下的位姿，由相机的旋转矩阵 $\boldsymbol R$ 和平移向量 $\boldsymbol t$ 来描述。此时有：
 
 $$
-Z \cdot \boldsymbol {P_{uv} |_{3\times1} } 
+Z \cdot \boldsymbol {P_{uv} |_{3\times1}} 
 $$
 
 $$
 = 
 Z \cdot 
-\begin{bmatrix} 
+\left[
+\begin{matrix}
 u \\ 
 v \\ 
 1 \\ 
-\end{bmatrix} 
+\end{matrix}
+\right]
 $$
 
 $$
@@ -265,6 +280,7 @@ $$
 (\boldsymbol {RP_w+t})= 
 \underbrace{[X,Y,Z]^T}  \to \ \ \ 
 \underbrace{[X/Z,Y/Z,1]^T} \\ 
+
 { \ \ \ \ \ 相机坐标} \ \ \ \
 { \ \ \ \ \ 归一化坐标}
 $$
