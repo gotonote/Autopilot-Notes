@@ -76,6 +76,14 @@ $$
 
 其中，变量的**单位**是 $f \rightarrow mm ; \alpha, \beta \rightarrow 像素/mm; f_x,f_y \rightarrow 像素$。将坐标进行归一化，写成矩阵形式，并对左侧像素坐标进行齐次化，方便后面的运算：
 
+
+$$\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \frac 1Z \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \frac1Z \boldsymbol {KP}
+$$
+
+$$
+Z\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \boldsymbol {KP} \\
+$$
+
 $$
 \left[
 \begin{matrix}
