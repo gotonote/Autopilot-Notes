@@ -94,7 +94,19 @@ f_x &0 &c_x \\
 $$
 
 $$
-Z\begin{bmatrix} u \\ v\\ 1 \\ \end{bmatrix} = \begin{bmatrix} f_x &0 &c_x \\ 0 &f_y &c_y\\ 0 &0 &1 \\ \end{bmatrix} \overset{\triangle}{=} \boldsymbol {KP} \\
+Z\begin{bmatrix} 
+u \\ 
+v \\ 
+1 \\ 
+\end{bmatrix} 
+= 
+\begin{bmatrix} 
+f_x &0 &c_x \\ 
+0 &f_y &c_y \\ 
+0 &0 &1 \\ 
+\end{bmatrix} 
+\overset{\triangle}{=} 
+\boldsymbol {KP}
 $$
 
 
