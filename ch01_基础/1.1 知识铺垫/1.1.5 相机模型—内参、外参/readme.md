@@ -89,11 +89,11 @@ f_x &0 &c_x \\
 0 &0 &1 \\ 
 \end{bmatrix} 
 \overset{\triangle}{=} 
-\frac1Z \boldsymbol{KP} \\ 
+\frac1Z \boldsymbol{KP}
 $$
 
+整理得：
 $$
-\Downarrow \\ 
 Z\begin{bmatrix} 
 u \\ 
 v \\ 
@@ -105,8 +105,7 @@ f_x &0 &c_x \\
 0 &0 &1 \\ 
 \end{bmatrix} 
 \overset{\triangle}{=} 
-\boldsymbol{KP} 
-
+\boldsymbol{KP}
 $$
 
 把中间的量组成的矩阵称为相机的**内参矩阵**（Camera Intrinsics） $\boldsymbol K$ 。
