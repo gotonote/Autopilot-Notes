@@ -255,6 +255,10 @@ $$
 $$
 
 $$
+{=} \boldsymbol{K|_{3\times3}}
+$$
+
+$$
 {=} \boldsymbol{K|_{3\times3}} \cdot \boldsymbol{T|_{3\times4}} \cdot \boldsymbol{{P_w}|_{4\times1}} \tag{1.3}
 $$
 
