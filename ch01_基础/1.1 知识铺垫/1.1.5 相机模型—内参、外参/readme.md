@@ -255,10 +255,6 @@ $$
 $$
 
 $$
-{=} \boldsymbol{K |_{3 \times 3}} T_3
-$$
-
-$$
 {=} \boldsymbol{K_{3\times3}} \cdot \boldsymbol{T_{3\times4}} \cdot \boldsymbol{{P_w}_{4\times1}} \tag{1.3}
 $$
 
