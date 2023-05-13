@@ -240,8 +240,7 @@ $$
 $$
 
 $$
-= 
-{Z} \cdot 
+{= Z} \cdot 
 \left[
 \begin{matrix}
 u \\ 
@@ -269,7 +268,7 @@ $$
 
 $$
 \begin{align}
-(\boldsymbol {RP_w+t})= 
+(\boldsymbol {RP_w+t}) {=} 
 \underbrace{[X,Y,Z]^T}  \to \ \ \ 
 \underbrace{[X/Z,Y/Z,1]^T} \\ 
 
