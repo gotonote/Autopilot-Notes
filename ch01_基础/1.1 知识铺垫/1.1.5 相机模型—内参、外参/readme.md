@@ -93,7 +93,7 @@ f_x &0 &c_x \\
 $$
 
 $$
-\begin{bmatrix} 
+{Z}\begin{bmatrix} 
 u \\ 
 v \\ 
 1 \\ 
