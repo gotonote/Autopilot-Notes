@@ -251,30 +251,27 @@ v \\
 $$
 
 $$
-\ \ \ \ \ =\boldsymbol{K} (\boldsymbol{RP_w+t}) 
+{=} \boldsymbol{K} (\boldsymbol{RP_w+t}) 
 $$
 
 $$
-\ \ \ \ \ \ \ \ \ =\boldsymbol{K|_{3\times3} \cdot T|_{3\times4} \cdot P_w|_{4\times1}} \tag{1.3}
+{=} \boldsymbol{K|_{3\times3} \cdot T|_{3\times4} \cdot P_w|_{4\times1}} \tag{1.3}
 $$
 
 > `两侧都是齐次坐标，同时因为齐次坐标乘上非零常数后表达同样的含义，所以可以简单地把Z去掉`：
 > 
-> $$\boldsymbol {P_{uv}= KTP_w}$$
+> $$ \boldsymbol {P_{uv}= KTP_w} $$
 > 
 > `但这样等号意义就变了，成为在齐次坐标下相等的概念，相差了一个非零常数。为了避免麻烦，我们还是从传统意义下来定义书写等号。`（《SLAM 十四讲》）
 
 式 1.3 表明，我们可以把一个世界坐标点先转换到相机坐标系，再除掉它最后一维的数值（该点距离相机成像平面的深度），这就相当于把最后一维进行了 **归一化处理** ，得到点$P$在相机 **归一化平面** 上的投影：
 
 $$
-\begin{align}
-(\boldsymbol {RP_w+t}) {=} 
-\underbrace{[X,Y,Z]^T}  \to \ \ \ 
+(\boldsymbol {RP_w+t}) \ \ \ \ {=} \ \ \ 
+\underbrace{[X,Y,Z]^T} \ \ \   \to \ \ \ \ 
 \underbrace{[X/Z,Y/Z,1]^T} \\ 
-
-{ \ \ \ \ 相机坐标} \ \ \ \ 
-{ \ \ \ \ 归一化坐标}
-\end{align}
+\ \ \ \ \ \ \ \ \ \ \  \ {相机坐标} \ \ \ \ 
+\ \ \ \ \ \ \ {归一化坐标}
 $$
 
 **归一化坐标** 可以看成相机前方$z=1$处的平面上的一个点，这个$z=1$平面也称为 **归一化平面** 。归一化坐标左称内参 $\boldsymbol K$ 就得到了像素坐标，因此可以把像素坐标 $[u,v]^T$ 看成对归一化平面上的点进行量化测量的结果。
