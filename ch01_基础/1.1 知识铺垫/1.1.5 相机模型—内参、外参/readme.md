@@ -255,7 +255,7 @@ $$
 $$
 
 $$
-{=} \boldsymbol{K|_{3\times3}} \cdot{\boldsymbol{T|_{3\times4}}}
+{=} \boldsymbol{K|_{3\times3}} \boldsymbol{T|_{3\times4}}
 $$
 
 $$
