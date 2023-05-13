@@ -255,7 +255,7 @@ $$
 $$
 
 $$
-{=} K|_{3\times3} \cdot T|_{3\times4} \cdot P_w|_{4\times1} \tag{1.3}
+{=} K|_{3\times3} \cdot T|_{3\times4} \cdot P_w|_{4\times1}
 $$
 
 > `两侧都是齐次坐标，同时因为齐次坐标乘上非零常数后表达同样的含义，所以可以简单地把Z去掉`：
