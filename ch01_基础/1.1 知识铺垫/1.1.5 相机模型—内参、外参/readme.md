@@ -37,15 +37,21 @@ $$
 可以得到：
 
 $$
+\begin{align}
 \frac Z f = \frac X {X'}=\frac Y {Y'}
+\end{align}
 $$
 
 $$
+\begin{align}
 X'=f\frac X Z
+\end{align}
 $$
 
 $$
+\begin{align}
 Y'=f\frac Y Z
+\end{align}
 $$
 
 从物理成像坐标系到像素坐标系之前，相差了一个**缩放**和**平移**。缩放是因为两个坐标系之前的表示的单位长度不一致，平移是因为两个坐标系的原点不一致。
@@ -173,7 +179,9 @@ $$
 （参考图3）其中，成像传感器是 $m\times n(\mu m)$ ，图像尺寸是 $w\times h(pixel)$ ，像素单元$x$轴方向长度 $\mathrm{d}x=\frac mw(\mu m/pixel)$ ，可以看到：
 
 $$
+\begin{align}
 \tan({\frac {\alpha}2} \cdot \frac {\pi}{180} ) = \frac {m/2}{f}
+\end{align}
 $$
 
 $$
@@ -193,7 +201,7 @@ f_x = \frac f{\mathrm dx}
 $$
 
 $$
-FOV=\alpha =2\arctan(\frac {w}{2f_x}) \cdot \frac {180}{\pi} \tag{1.2}\\ 
+FOV=\alpha =2\arctan(\frac {w}{2f_x}) \cdot \frac {180}{\pi} \tag{1.2}
 $$
 
 如果已知相机传感器尺寸，通过公式 1.1 可以计算出相机的视场角 $FOV$ ；
@@ -228,12 +236,12 @@ $$
 相机在世界坐标系下的位姿，由相机的旋转矩阵 $\boldsymbol R$ 和平移向量 $\boldsymbol t$ 来描述。此时有：
 
 $$
-Z \cdot \boldsymbol {P_{uv} |_{3\times1}} 
+{Z} \cdot \boldsymbol {P_{uv} |_{3\times1}} 
 $$
 
 $$
 = 
-Z \cdot 
+{Z} \cdot 
 \left[
 \begin{matrix}
 u \\ 
@@ -260,12 +268,14 @@ $$
 式 1.3 表明，我们可以把一个世界坐标点先转换到相机坐标系，再除掉它最后一维的数值（该点距离相机成像平面的深度），这就相当于把最后一维进行了 **归一化处理** ，得到点$P$在相机 **归一化平面** 上的投影：
 
 $$
+\begin{align}
 (\boldsymbol {RP_w+t})= 
 \underbrace{[X,Y,Z]^T}  \to \ \ \ 
 \underbrace{[X/Z,Y/Z,1]^T} \\ 
 
-{ \ \ \ \ \ 相机坐标} \ \ \ \
-{ \ \ \ \ \ 归一化坐标}
+{ \ \ \ \ 相机坐标} \ \ \ \ 
+{ \ \ \ \ 归一化坐标}
+\end{align}
 $$
 
 **归一化坐标** 可以看成相机前方$z=1$处的平面上的一个点，这个$z=1$平面也称为 **归一化平面** 。归一化坐标左称内参 $\boldsymbol K$ 就得到了像素坐标，因此可以把像素坐标 $[u,v]^T$ 看成对归一化平面上的点进行量化测量的结果。
