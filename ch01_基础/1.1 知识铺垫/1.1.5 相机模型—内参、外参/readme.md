@@ -93,7 +93,8 @@ v \\
 f_x &0 &c_x \\
 0 &f_y &c_y\\
 0 &0 &1 \\ 
-\end{bmatrix} 
+\end{bmatrix}
+\boldsymbol{P}
 \overset{\triangle}{=} 
 \frac1Z \boldsymbol{KP}
 $$
@@ -108,7 +109,8 @@ v \\
 f_x &0 &c_x \\
 0 &f_y &c_y \\ 
 0 &0 &1 \\ 
-\end{bmatrix} 
+\end{bmatrix}
+\boldsymbol{P} 
 \overset{\triangle}{=} 
 \boldsymbol{KP}
 $$
@@ -255,7 +257,7 @@ $$
 $$
 
 $$
-{=} \boldsymbol{K_{3\times3}} \cdot \boldsymbol{T_{3\times4}} \cdot \boldsymbol{{P_w}_{4\times1}} \tag{1.3}
+{=} \boldsymbol{K_{3\times3}} \cdot \boldsymbol{T_{3\times4}} \cdot \boldsymbol{{P_w} \ _{4\times1}} \tag{1.3}
 $$
 
 > `两侧都是齐次坐标，同时因为齐次坐标乘上非零常数后表达同样的含义，所以可以简单地把Z去掉`：
@@ -273,7 +275,7 @@ $$
 \ \ \ \ ({相机坐标} \ \ \to \ \ {归一化坐标})
 $$
 
-**归一化坐标** 可以看成相机前方$z=1$处的平面上的一个点，这个$z=1$平面也称为 **归一化平面** 。归一化坐标左称内参 $\boldsymbol K$ 就得到了像素坐标，因此可以把像素坐标 $[u,v]^T$ 看成对归一化平面上的点进行量化测量的结果。
+**归一化坐标** 可以看成相机前方 $Z=1$ 处的平面上的一个点，这个 $Z=1$ 平面也称为 **归一化平面** 。归一化坐标左称内参 $\boldsymbol K$ 就得到了像素坐标，因此可以把像素坐标 $[u,v]^T$ 看成对归一化平面上的点进行量化测量的结果。
 
 同时可以看到，如果对相机坐标同时乘上任意非零常数，归一化坐标都是一样的，也就是 **点的深度信息在投影的过程中丢失了** ，所以在单目视觉中没法得到像素点的深度值。
 
