@@ -92,9 +92,8 @@ f_x &0 &c_x \\
 \frac1Z \boldsymbol{KP}
 $$
 
-整理得：
 $$
-Z\begin{bmatrix} 
+\begin{bmatrix} 
 u \\ 
 v \\ 
 1 \\ 
