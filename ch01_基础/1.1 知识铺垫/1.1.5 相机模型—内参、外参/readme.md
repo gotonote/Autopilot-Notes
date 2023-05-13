@@ -92,9 +92,9 @@ f_x &0 &c_x \\
 \overset{\triangle}{=} 
 \frac1Z \boldsymbol {KP}
 $$
-
+&nbsp;
 $$
-Z\begin{bmatrix} 
+Z\cdot\begin{bmatrix} 
 u \\ 
 v \\ 
 1 \\ 
