@@ -255,7 +255,7 @@ $$
 $$
 
 $$
-{=} \boldsymbol{K |_{3 \times 3}} T |_1
+{=} \boldsymbol{K |_{3 \times 3}} T |_{3}
 $$
 
 $$
