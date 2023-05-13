@@ -251,11 +251,11 @@ v \\
 $$
 
 $$
-{=} \boldsymbol{K} (\boldsymbol{RP_w+t}) 
+{=} \boldsymbol{K} (\boldsymbol{RP_w+t})
 $$
 
 $$
-{=} \boldsymbol{K|_{3\times3} \cdot T|_{3\times4} \cdot P_w|_{4\times1}} \tag{1.3}
+{=} \boldsymbol{K|_{3\times3} \cdot{T|_{3\times4}} \cdot{P_w|_{4\times1}}} \tag{1.3}
 $$
 
 > `两侧都是齐次坐标，同时因为齐次坐标乘上非零常数后表达同样的含义，所以可以简单地把Z去掉`：
@@ -270,8 +270,7 @@ $$
 (\boldsymbol {RP_w+t}) \ \ \ \ {=} \ \ \ 
 \underbrace{[X,Y,Z]^T} \ \ \   \to \ \ \ \ 
 \underbrace{[X/Z,Y/Z,1]^T} \\ 
-\ \ \ \ \ \ \ \ \ \ \  \ {相机坐标} \ \ \ \ 
-\ \ \ \ \ \ \ {归一化坐标}
+({相机坐标} \ \ \to \ \ {归一化坐标})
 $$
 
 **归一化坐标** 可以看成相机前方$z=1$处的平面上的一个点，这个$z=1$平面也称为 **归一化平面** 。归一化坐标左称内参 $\boldsymbol K$ 就得到了像素坐标，因此可以把像素坐标 $[u,v]^T$ 看成对归一化平面上的点进行量化测量的结果。
