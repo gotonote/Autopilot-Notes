@@ -1,4 +1,4 @@
-# 《自动驾驶更新笔记 Autopilot Updating Notes》
+# 《自动驾驶笔记 Autopilot Notes》
 
 ![封面](./imgs/1.jpg)
 ### 重点
