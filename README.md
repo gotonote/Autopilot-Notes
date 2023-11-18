@@ -97,7 +97,14 @@
 |-------- [9.1.4 数据标注、采集、虚拟化](./ch09_厂商方案/9.1%20特斯拉%20AI%20Day2022/9.1.4%20数据标注、采集、虚拟化.md) \
 |---- 9.2 百度阿波罗apollo \
 |-------- [9.2.1 Apollo 8.0 技术新特性解读](./ch09_厂商方案/9.2%20百度阿波罗apollo/9.2.1%20Apollo%208.0%20技术新特性解读.md) \
-|---- 9.3 Openpilot 
+|---- 9.3 Openpilot \
+
+## 五、关注我
+
+<div align=center>
+<img src="./imgs/wechat-public.jpg" width="300" height="300"> 
+</div>
+<div align=center>微信公众号</div>
 
 
 
