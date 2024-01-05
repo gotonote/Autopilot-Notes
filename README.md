@@ -64,6 +64,7 @@
 |---- [3.3 BEV鸟瞰图](./ch03_%E6%84%9F%E7%9F%A5/3.3%20BEV%E9%B8%9F%E7%9E%B0%E5%9B%BE/README.md) \
 |-------- [3.3.1 LSS](./ch03_感知/3.3%20BEV/3.3.1%20LSS.md) \
 |---- [3.4 Occupany Network](./ch03_感知/3.4%20Occupany%20Network/3.4.1%20Occupany%20Network.md) \
+|-------- [3.4.2 SurroundOcc](./ch03_感知/3.4%20Occupany%20Network/3.4.2%20SurroundOcc.md) \
 [**4. 定位**](./ch04_定位/readme.md) \
 **5. 策略规划** \
 |---- [5.1 预测](./ch05_策略规划/5.1%20预测/readme.md) \
