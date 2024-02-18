@@ -338,7 +338,7 @@ NeRF方法生产生图像时，每个像素都需要近200次MLP深度模型的�
 </div>
 <div align=center>图11. AutoInt</div>
 
-## 三、NeRF 存在的问题
+## 四、NeRF 存在的问题
 
 ### （一）速度慢
 
@@ -384,7 +384,7 @@ NeRF方法针对一个新的场景需要重新训练，无法直接扩展到没�
 </div>
 <div align=center>图16. Mip-NeRF</div>
 
-## 四、NeRF 相关应用
+## 五、NeRF 相关应用
 
 ### （一）逆渲染
 
