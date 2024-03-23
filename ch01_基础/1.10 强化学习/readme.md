@@ -133,7 +133,7 @@ class Solver:
       self.regrets=[]#记录每一步的累积懊悔
    def update_regret(self,K):
       #计算累积懊悔并保存，K为本次动作选择的拉杆编号
-      self.regret+=self.bandit.best_prob-self.bandit,probs[k]
+      self.regret+=self.bandit.best_prob-self.bandit.probs[k]
       self.regrets.append(self.regret)
    def run_one_step(self):
       #返回当前动作选择哪一根拉杆，由每个具体的策略实现
