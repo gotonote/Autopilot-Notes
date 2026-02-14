@@ -1,0 +1,5 @@
+2026-02-14 创建定位章节基础入门文档
+- 4.1 SLAM基础.md：SLAM定义、视觉vs激光SLAM、经典算法(ORB-SLAM、LIO-SAM等)
+- 4.2 高精地图.md：高精地图定义、制作流程、主流格式(OpenDRIVE、Lanelet2)
+- 4.3 多传感器融合定位.md：融合必要性、松耦合vs紧耦合、卡尔曼滤波应用
+- 4.4 GNSS-INS组合导航.md：GNSS原理与误差、INS原理、RTK/PPP技术
