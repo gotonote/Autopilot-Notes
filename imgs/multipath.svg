@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="450" height="280" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="450" height="280" fill="white"/>
+  
+  <text x="225" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">GNSS Multipath Effect</text>
+  
+  <!-- Satellite -->
+  <circle cx="50" cy="50" r="15" fill="#FF9800" stroke="#EF6C00"/>
+  <text x="50" y="55" font-size="8" text-anchor="middle" fill="white">Sat</text>
+  
+  <!-- Direct signal -->
+  <line x1="60" y1="60" x2="200" y2="180" stroke="#4CAF50" stroke-width="2"/>
+  <text x="140" y="110" font-size="9" fill="#4CAF50">Direct Signal</text>
+  
+  <!-- Reflected signal -->
+  <path d="M60 60 Q120 80 180 150 Q200 170 200 180" stroke="#F44336" stroke-width="2" fill="none"/>
+  <text x="130" y="130" font-size="9" fill="#F44336">Reflected Signal</text>
+  
+  <!-- Building -->
+  <rect x="180" y="100" width="80" height="150" fill="#9E9E9E" stroke="#616161"/>
+  <text x="220" y="180" font-size="10" text-anchor="middle" fill="white">Building</text>
+  
+  <!-- Receiver -->
+  <rect x="180" y="200" width="40" height="30" fill="#2196F3" stroke="#1565C0" rx="3"/>
+  <text x="200" y="220" font-size="9" text-anchor="middle" fill="white">Receiver</text>
+  
+  <!-- Legend box -->
+  <rect x="280" y="30" width="160" height="100" fill="#FFF3E0" stroke="#FFE0B2" rx="3"/>
+  <text x="360" y="50" font-size="11" font-weight="bold" text-anchor="middle" fill="#333">Multipath Errors</text>
+  <text x="360" y="70" font-size="9" text-anchor="middle" fill="#555">- Signal reflection</text>
+  <text x="360" y="85" font-size="9" text-anchor="middle" fill="#555">- Additional path delay</text>
+  <text x="360" y="100" font-size="9" text-anchor="middle" fill="#555">- Positioning error</text>
+  <text x="360" y="115" font-size="9" text-anchor="middle" fill="#555">- Urban areas worst</text>
+  
+  <!-- Solution -->
+  <rect x="280" y="140" width="160" height="60" fill="#E8F5E9" stroke="#C8E6C9" rx="3"/>
+  <text x="360" y="160" font-size="10" font-weight="bold" text-anchor="middle" fill="#333">Solutions</text>
+  <text x="360" y="178" font-size="9" text-anchor="middle" fill="#555">- Antenna design</text>
+  <text x="360" y="192" font-size="9" text-anchor="middle" fill="#555">- Signal filtering</text>
+</svg>

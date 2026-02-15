@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="400" fill="white"/>
+  
+  <text x="350" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Multi-Sensor Fusion Architecture</text>
+  
+  <!-- Sensor Layer -->
+  <rect x="20" y="60" width="660" height="60" fill="#E0E0E0" stroke="#9E9E9E" stroke-width="2" rx="5"/>
+  <text x="350" y="95" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Sensor Layer: Camera | LiDAR | Radar | IMU | GNSS</text>
+  
+  <!-- Preprocessing Layer -->
+  <rect x="20" y="140" width="660" height="50" fill="#BBDEFB" stroke="#1976D2" stroke-width="2" rx="5"/>
+  <text x="350" y="170" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Preprocessing: Calibration | Time Sync | Noise Filtering</text>
+  
+  <!-- Fusion Layer -->
+  <rect x="100" y="210" width="500" height="80" fill="#C8E6C9" stroke="#388E3C" stroke-width="2" rx="5"/>
+  <text x="350" y="245" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Fusion Layer</text>
+  <text x="350" y="270" font-size="11" text-anchor="middle" fill="#555">Early Fusion | Deep Fusion | Late Fusion</text>
+  
+  <!-- Output Layer -->
+  <rect x="200" y="310" width="300" height="60" fill="#FFE0B2" stroke="#F57C00" stroke-width="2" rx="5"/>
+  <text x="350" y="345" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">Output: 3D Bounding Boxes | HD Map | Pose | Trajectory</text>
+  
+  <!-- Arrows -->
+  <line x1="350" y1="120" x2="350" y2="140" stroke="#333" stroke-width="2"/>
+  <line x1="350" y1="190" x2="350" y2="210" stroke="#333" stroke-width="2"/>
+  <line x1="350" y1="290" x2="350" y2="310" stroke="#333" stroke-width="2"/>
+</svg>
