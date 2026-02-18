@@ -1,5 +1,5 @@
 <div align=center>
-<img src="./imgs/8.1.1.jpg" width="700" height="300">
+<img src="./imgs/9.1.1.jpg" width="700" height="300">
 </div>
 <div align=center>图1. FSD2022 更新解析 </div>
 
@@ -8,7 +8,7 @@
 **一、特斯拉自动驾驶FSD现状**
 
 <div align=center>
-<img src="./imgs/8.1.2.jpg" width="500" height="300">
+<img src="./imgs/9.1.2.jpg" width="500" height="300">
 </div>
 <div align=center>图2. 特斯拉自动驾驶FSD现状 </div>
 
@@ -19,7 +19,7 @@
 **二、特斯拉自动驾驶FSD算法优化情况**
 
 <div align=center>
-<img src="./imgs/8.1.3.jpg" width="500" height="300">
+<img src="./imgs/9.1.3.jpg" width="500" height="300">
 </div>
 <div align=center>图3. 特斯拉自动驾驶FSD算法优化情况 </div>
 

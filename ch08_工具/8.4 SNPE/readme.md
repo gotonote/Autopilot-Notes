@@ -12,7 +12,7 @@ SNPE（Snapdragon Neural Processing Engine），是一个在高通骁龙系列�
 下图展示了基于SNPE部署网络的workflow：
 
 <div align=center>
-<img src="./imgs/7.4.1.jpg" width="600" height="300">
+<img src="./imgs/8.4.1.jpg" width="600" height="300">
 </div>
 <div align=center>图1. SNPE workflow </div>
 
@@ -20,6 +20,6 @@ SNPE（Snapdragon Neural Processing Engine），是一个在高通骁龙系列�
 
 以下是针对SNPE/AIP更详细的介绍：
 
-[Snapdragon NPE Runtime](./7.4.1%20Snapdragon%20NPE%20Runtime.md)
+[Snapdragon NPE Runtime](./8.4.1%20Snapdragon%20NPE%20Runtime.md)
 
-[AIP Runtime](./7.4.2%20AIP%20Runtime.md)
+[AIP Runtime](./8.4.2%20AIP%20Runtime.md)
