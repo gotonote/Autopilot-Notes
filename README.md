@@ -177,12 +177,12 @@
 
 | 厂商 | 方案 | 算力 | 特点 |
 |:-----|:-----|:-----|:-----|
-| 华为 | ADS 3.0 | 400+ TOPS | 激光雷达融合，全栈自研 |
-| 小鹏 | XNGP | 508 TOPS | 城市NOA领先，BEV感知 |
-| 蔚来 | NAD | 1016 TOPS | 四Orin X，硬件领先 |
-| 理想 | AD Max | 508 TOPS | 家庭定位，舒适度高 |
+| 华为 | ADS 4.0 | 400+ TOPS | 激光雷达融合，L3商用，全栈自研 |
+| 小鹏 | XNGP 4.0 | 508 TOPS | 城市NOA领先，端到端大模型 |
+| 蔚来 | NAD 3.0 | 1016 TOPS | 四Orin X，硬件领先 |
+| 理想 | AD Max 3.0 | 508 TOPS | 家庭定位，舒适度高 |
 | 小马智行 | PonyAlpha | 508 TOPS | L4级自动驾驶，Robotaxi |
-| 小米 | Xiaomi Pilot | 508 TOPS | 生态优势，快速迭代 |
+| 小米 | Xiaomi Pilot 3.2 | 508 TOPS | 生态优势，快速迭代 |
 | 特斯拉 | FSD v14.x | 720 TOPS | 纯视觉，端到端 |
 
 ### 智驾芯片格局 (2026)
@@ -194,6 +194,7 @@
 | 华为 | MDC 810 | 400+ TOPS | 7nm |
 | 地平线 | 征程6P | 560 TOPS | 7nm |
 | 高通 | Snapdragon Flex | 600 TOPS | 4nm |
+| 小米 | 澎湃C1 | 508 TOPS | 7nm |
 
 ---
 
