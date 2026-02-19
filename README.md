@@ -204,40 +204,62 @@
 ## 🔥 前沿技术动态 (2026年2月)
 
 ### 端到端自动驾驶 (End-to-End)
-- 特斯拉FSD v14/v15全面采用端到端架构，累计行驶里程突破**85亿英里**
-- 百度Apollo开源Apollo EDU训练框架，推动行业技术共享
-- 小鹏、华为、理想全面跟进端到端路线，城市NOA加速落地
-- 小马智行PonyAlpha 7.0采用端到端+VLA融合架构
+- **特斯拉FSD V14** 正式发布，CEO Elon Musk称之为"sentient"和"mind-blowing"
+- FSD V14相比V12/V13更加自信，驾驶风格更接近人类，加速和减速更加平滑
+- V14实现端到端点到点能力，从驻车到驻车仅需驾驶员监督
+- FSD V14.2.2.4/5持续迭代更新，覆盖美国全境城市NOA
+- 特斯拉累计FSD行驶里程突破**90亿英里**（2026年2月数据）
+- 小马智行PonyAlpha 7.0采用端到端+VLA融合架构，Uber签署独家合作协议
 - 商汤推出UniAD端到端自动驾驶模型
-- 2026年2月：小马智行与Uber签署独家合作协议，进军国际市场
+- **Waymo** 开放2025端到端驾驶挑战赛，AutoVLA获RFS Spotlight最高分
+- **2026年展望**: 主流厂商全面转向端到端架构，城市NOA加速落地
 
 ### VLA (Vision-Language-Action)
-- Waymo推出多模态驾驶助手，支持自然语言交互
-- 小鹏XGPT 4.0/5.0支持自然语言交互驾驶决策
-- 华为ADS 4.1集成VLA大模型，支持场景描述与解释
-- 特斯拉FSD v15将整合VLA能力，实现"会说话"的自动驾驶
-- 清华-理想提出DriveVLM端云协同VLA模型
-- 2026年2月：小米Xiaomi Pilot 3.6计划集成VLA大模型
+- **AutoVLA** (NeurIPS 2025): UCLA提出自适应推理+强化微调的VLA模型
+  - 集成链式思考(CoT)推理和物理动作tokenization
+  - 支持快速思考(仅轨迹)和慢速思考(CoT推理)双模式动态切换
+  - 基于GRPO的强化微调(RFT)提升规划性能和运行效率
+  - 在nuPlan、nuScenes、Waymo、CARLA等数据集取得领先性能
+- **Waymo** 推出多模态驾驶助手，支持自然语言交互
+- **小鹏XGPT 5.0** 支持自然语言交互驾驶决策
+- **华为ADS 4.1** 集成VLA大模型，支持场景描述与解释
+- **清华-理想** 提出DriveVLM端云协同VLA模型
+- **DriveLM** (NeurIPS 2023-2025): 视觉语言模型理解驾驶场景系列工作
+- **VLA最新Survey**: arXiv 2506.24044 系统综述VLA模型在自动驾驶中的应用
 
 ### Occupancy Network 最新论文/方案
-- Tesla Occupancy Network升级到v3版本，新增时序融合和动态物体跟踪
-- 华为ADS 3.0采用Occupancy Network 2.0，感知精度提升40%
-- 最新论文《SparseOcc:稀疏表示的Occupancy Network》提出全新架构
-- 地平线Sparse4D v3引入Occupancy检测能力
-- 北大-毫末提出PAOcc:占用感知Occpancy网络
+- **Tesla Occupancy Network** 升级到v3版本，新增时序融合和动态物体跟踪
+- **SparseOcc** (2025): 稀疏表示的Occpancy Network，全新架构设计
+- **GEOcc** (IEEE 2025): Geometrically Enhanced 3D Occupancy Network，几何增强
+- **PAOcc** (北大-毫末): 占用感知Occupancy网络
+- **Physics-Informed E2E Occupancy** (arXiv 2505.07855): 物理信息端到端占用框架
+- **SAMOccNet** (ScienceDirect 2025): 基于SAM的周围语义占用网络
+- **华为ADS 3.0** 采用Occupancy Network 2.0，感知精度提升40%
+- **地平线Sparse4D v3** 引入Occupancy检测能力
 
 ### L3级自动驾驶 (2026加速商用)
-- 华为ADS 4.0/4.1商用，支持高速/城市NCA
-- 小鹏XNGP 5.0获L3级自动驾驶测试牌照
-- 小米Xiaomi Pilot 3.2开展L3级自动驾驶测试
-- 北京允许小马智行开展完全无人Robotaxi收费运营
+- **华为ADS 4.0/4.1** 商用，支持高速/城市NCA
+- **小鹏XNGP 5.0** 获L3级自动驾驶测试牌照
+- **小米Xiaomi Pilot 3.2** 开展L3级自动驾驶测试
+- **北京** 允许小马智行开展完全无人Robotaxi收费运营
+- **2027-2028**: GM、 Rivian、Lucid、Porsche、Audi、Nissan等多家厂商计划推出L3
 
-### 特斯拉 FSD V13/V14 最新进展
-- FSD V13.2正式发布，取消beta标签向全面推送
-- 城市NOA覆盖美国全境，驾驶风格更加激进
-- 语音控制驾驶决策，驻车辅助功能增强
-- V14/V15引入端到端+VLA融合架构
-- 累计行驶里程突破85亿英里
+### 特斯拉 FSD V13/V14 最新进展 (2026年2月)
+- **FSD V14** (2025年10月发布): 
+  - 首次重大年度更新，被CEO称为"mind-blowing"
+  - 端到端神经网络架构，完全重写
+  - 支持点到点驾驶（泊车到泊车）
+  - 驾驶风格更自然，减少机器人感
+  - 尝试在超车后返回右侧车道
+  - 仅支持HW4 (AI4) 硬件
+- **FSD V14.2.2.4/5** (2026年1-2月): 持续迭代优化
+- **HW3困境**: HW3车辆（约2024年前生产的车辆）无法获得最新FSD更新
+- **累计行驶里程**: 突破**90亿英里**（2026年2月）
+- **FSD V15预期**: 将整合VLA能力，实现"会说话"的自动驾驶
+- **Robotaxi**: 特斯拉在奥斯汀等地开展无人驾驶试点
+- **评测反馈**: 
+  - 优点：更自信的驾驶、更像人类、加速减速更平滑
+  - 缺点：仍非无监督自动驾驶、错过出口、变道时机不当等问题
 
 ---
 
