@@ -209,6 +209,7 @@
 - 小鹏、华为、理想全面跟进端到端路线，城市NOA加速落地
 - 小马智行PonyAlpha 7.0采用端到端+VLA融合架构
 - 商汤推出UniAD端到端自动驾驶模型
+- 2026年2月：小马智行与Uber签署独家合作协议，进军国际市场
 
 ### VLA (Vision-Language-Action)
 - Waymo推出多模态驾驶助手，支持自然语言交互
@@ -216,6 +217,7 @@
 - 华为ADS 4.1集成VLA大模型，支持场景描述与解释
 - 特斯拉FSD v15将整合VLA能力，实现"会说话"的自动驾驶
 - 清华-理想提出DriveVLM端云协同VLA模型
+- 2026年2月：小米Xiaomi Pilot 3.6计划集成VLA大模型
 
 ### Occupancy Network 最新论文/方案
 - Tesla Occupancy Network升级到v3版本，新增时序融合和动态物体跟踪
