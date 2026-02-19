@@ -204,16 +204,25 @@
 ## 🔥 前沿技术动态 (2026年2月)
 
 ### 端到端自动驾驶 (End-to-End)
-- 特斯拉FSD v14全面采用端到端架构，累计行驶里程突破85亿英里
-- 百度Apollo开源EDU训练框架，推动行业技术共享
+- 特斯拉FSD v14/v15全面采用端到端架构，累计行驶里程突破**85亿英里**
+- 百度Apollo开源Apollo EDU训练框架，推动行业技术共享
 - 小鹏、华为、理想全面跟进端到端路线，城市NOA加速落地
 - 小马智行PonyAlpha 7.0采用端到端+VLA融合架构
+- 商汤推出UniAD端到端自动驾驶模型
 
 ### VLA (Vision-Language-Action)
 - Waymo推出多模态驾驶助手，支持自然语言交互
 - 小鹏XGPT 4.0/5.0支持自然语言交互驾驶决策
 - 华为ADS 4.1集成VLA大模型，支持场景描述与解释
 - 特斯拉FSD v15将整合VLA能力，实现"会说话"的自动驾驶
+- 清华-理想提出DriveVLM端云协同VLA模型
+
+### Occupancy Network 最新论文/方案
+- Tesla Occupancy Network升级到v3版本，新增时序融合和动态物体跟踪
+- 华为ADS 3.0采用Occupancy Network 2.0，感知精度提升40%
+- 最新论文《SparseOcc:稀疏表示的Occupancy Network》提出全新架构
+- 地平线Sparse4D v3引入Occupancy检测能力
+- 北大-毫末提出PAOcc:占用感知Occpancy网络
 
 ### L3级自动驾驶 (2026加速商用)
 - 华为ADS 4.0/4.1商用，支持高速/城市NCA
@@ -221,11 +230,12 @@
 - 小米Xiaomi Pilot 3.2开展L3级自动驾驶测试
 - 北京允许小马智行开展完全无人Robotaxi收费运营
 
-### 特斯拉 FSD V13/V14
+### 特斯拉 FSD V13/V14 最新进展
 - FSD V13.2正式发布，取消beta标签向全面推送
 - 城市NOA覆盖美国全境，驾驶风格更加激进
 - 语音控制驾驶决策，驻车辅助功能增强
-- V14引入端到端+VLA融合架构
+- V14/V15引入端到端+VLA融合架构
+- 累计行驶里程突破85亿英里
 
 ---
 
