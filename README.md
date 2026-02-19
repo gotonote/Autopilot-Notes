@@ -215,6 +215,14 @@
 - **2026年展望**: 主流厂商全面转向端到端架构，城市NOA加速落地
 
 ### VLA (Vision-Language-Action)
+- **ICLR 2026 VLA研究爆发式增长**：VLA领域投稿量从2025年的9篇激增到2026年的164篇，增长18倍
+- **ICLR 2026重点研究方向**：
+  - 离散扩散VLAs (Discrete Diffusion VLAs)
+  - 具身思维链 (Embodied Chain-of-Thought, ECoT)
+  - 新离散Tokenizer
+  - 高效VLAs
+  - RL for VLAs
+  - VLA + 视频预测
 - **NVIDIA Alpamayo** (CES 2026): 首个开源链式思考推理VLA模型
   - 集成CoT (Chain-of-Thought) 推理能力
   - 可处理复杂驾驶场景的推理任务
@@ -228,13 +236,15 @@
 - **华为ADS 4.1** 集成VLA大模型，支持场景描述与解释
 - **清华-理想** 提出DriveVLM端云协同VLA模型
 - **DriveLM** (NeurIPS 2023-2025): 视觉语言模型理解驾驶场景系列工作
-- **VLA最新Survey**: arXiv 2506.24044 系统综述VLA模型在自动驾驶中的应用
+- **OpenDriveVLA**: 开源端到端VLA模型，GitHub: DriveVLA/OpenDriveVLA
+- **最新Survey**: arXiv 2506.24044 系统综述VLA模型在自动驾驶中的应用
 
 ### Occupancy Network 最新论文/方案
 - **Tesla Occupancy Network** 升级到v3版本，新增时序融合和动态物体跟踪
 - **SparseOcc** (2025): 稀疏表示的Occpancy Network，全新架构设计
 - **GEOcc** (IEEE 2025): Geometrically Enhanced 3D Occupancy Network，几何增强
 - **PAOcc** (北大-毫末): 占用感知Occupancy网络
+- **ForecastOcc** (arXiv 2602.08006v1): 基于视觉的语义占用预测
 - **Physics-Informed E2E Occupancy** (arXiv 2505.07855): 物理信息端到端占用框架
 - **SAMOccNet** (ScienceDirect 2025): 基于SAM的周围语义占用网络
 - **华为ADS 3.0** 采用Occupancy Network 2.0，感知精度提升40%
@@ -258,9 +268,8 @@
 - **FSD V14.2.2.5** (2026年2月15-16日): 持续迭代优化
   - 新增FSD Stats功能
   - UI改进和神经网络编码器升级
-- **FSD V14.2.2.3/4**: 改进紧急车辆处理、手势检测、安全靠边停车
-- **30天免费试用**: 北美HW4车辆可免费体验FSD V14
-- **荷兰FSD试驾项目**: 特斯拉在荷兰推出试驾项目
+- **FSD V14.3预期**: Elon Musk称"到V14.3，你的车将感觉像有感知能力"
+- **FSD V14.2** 预计几周内发布，V14.3紧随其后
 - **HW3困境**: HW3车辆（约2024年前生产的车辆）无法获得最新FSD更新
 - **累计行驶里程**: 突破**90亿英里**（2026年2月）
 - **FSD V15预期**: 将整合VLA能力，实现"会说话"的自动驾驶
