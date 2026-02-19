@@ -207,15 +207,20 @@
 
 ---
 
-## 🔥 前沿技术动态 (2026年2月20日)
+## 🔥 前沿技术动态 (2026年2月20日更新)
 
 ### 端到端自动驾驶 (End-to-End)
+- 🆕 **AppleVLM** (arXiv 2602.04256, 2026年2月): 高级感知与规划增强的VLM端到端模型
+  - 可变形Transformer多视角时空融合 + BEV规划模态编码器 + 分层CoT解码器
+  - CARLA基准SOTA，已部署AGV平台实现复杂室外真实端到端驾驶
+- 🆕 **Musk宣布FSD每周迭代** (2026年2月19日)：训练管线完全自动化，承诺每7天可见改进
+- 🆕 **FSD累计里程突破80亿英里** (2026年2月18日)，不到2个月新增10亿英里
 - **特斯拉FSD V14** 正式发布，CEO Elon Musk称之为"sentient"和"mind-blowing"
 - FSD V14相比V12/V13更加自信，驾驶风格更接近人类，加速和减速更加平滑
 - V14实现端到端点到点能力，从驻车到驻车仅需驾驶员监督
 - FSD V14.2.2.5 (2025.45.10) 于2026年2月15-16日发布，持续迭代更新
 - FSD V14.3 开发中，Elon Musk称"将感觉像有感知能力"
-- 特斯拉累计FSD行驶里程突破**90亿英里**（2026年2月数据）
+- **全球端到端市场CAGR 19.0%**，2026年行业主流技术路线确立
 - **Waymo** 每周完成**45万次**完全无人驾驶出行，覆盖6个城市
 - **Waymo 6th Gen Driver** (2026年2月): 第六代无人驾驶系统正式运营
   - 传感器大幅精简：13个摄像头（从29个减少）、4个激光雷达（从5个减少）、6个雷达
@@ -230,6 +235,11 @@
 - **2026年展望**: 主流厂商全面转向端到端架构，城市NOA加速落地
 
 ### VLA (Vision-Language-Action)
+- 🆕 **HiST-VLA** (arXiv 2602.13329, 2026年2月11日): 分层时空VLA新SOTA
+  - 解决VLA三大痛点：数值推理不精确、3D空间感知弱、上下文敏感性高
+  - 动态Token稀疏化 + 分层Transformer规划器 + 动态潜在正则化
+  - NAVSIM v2 Navtest EPDMS 88.6, Navhard EPDMS 50.9 (SOTA)
+- 🆕 **2026年被预测为自动驾驶突破之年**：VLA技术规模化应用是关键驱动力
 - **ICLR 2026 VLA研究爆发式增长**：VLA领域投稿量从2025年的9篇激增到2026年的164篇，增长18倍
 - **ICLR 2026重点研究方向**：
   - 离散扩散VLAs (Discrete Diffusion VLAs)
@@ -260,6 +270,12 @@
 - **VLA-Diffusion** (ICLR 2026): 扩散模型驱动的VLA新范式
 
 ### Occupancy Network 最新论文/方案
+- 🆕 **GaussianOcc3D** (arXiv 2601.22729, 2026年1月): 3D高斯表示替代体素/BEV
+  - 相机-LiDAR多模态融合，Gauss-Mamba Head线性复杂度全局建模
+  - 三大基准SOTA：Occ3D 49.4% / SurroundOcc 28.9% / SemanticKITTI 25.2%
+- 🆕 **ASHSR** (Neurocomputing 2026): 反遮挡采样+硬样本重加权，RayIoU指标SOTA
+- 🆕 **AD-LiST-JEPA** (arXiv 2602.12540, 2026年2月): 基于JEPA的自监督世界模型
+  - LiDAR数据自监督学习，无需人工标注，用于占用补全和预测
 - **Tesla Occupancy Network** 升级到v3版本，新增时序融合和动态物体跟踪
 - **SparseOcc** (2025): 稀疏表示的Occpancy Network，全新架构设计
 - **GEOcc** (IEEE 2025): Geometrically Enhanced 3D Occupancy Network，几何增强
@@ -281,7 +297,12 @@
 - **北京** 允许小马智行开展完全无人Robotaxi收费运营
 - **2027-2028**: GM、 Rivian、Lucid、Porsche、Audi、Nissan等多家厂商计划推出L3
 
-### 特斯拉 FSD V13/V14 最新进展 (2026年2月20日)
+### 特斯拉 FSD V13/V14 最新进展 (2026年2月20日更新)
+- 🆕 **FSD每周迭代** (2026年2月19日): Musk宣布每7天可见改进，训练管线完全自动化
+- 🆕 **FSD累计80亿+英里**: 2个月内新增10亿英里，目标100亿英里启动无监督Robotaxi
+- 🆕 **两档FSD服务**: 已停止一次性购买，仅保留订阅制；未来分Supervised/Unsupervised两档
+- 🆕 **Cybercab FCC获批** (2026年2月19日): 超宽带无线充电获批，首批量产已下线
+- 🆕 **FSD全球拓展**: 欧洲/中国审批加速，Musk称"自动驾驶基本已解决"
 - **FSD V14** (2025年10月发布): 
   - 首次重大年度更新，被CEO称为"mind-blowing"
   - 端到端神经网络架构，完全重写
