@@ -207,7 +207,7 @@
 
 ---
 
-## 🔥 前沿技术动态 (2026年2月20日 06:00更新)
+## 🔥 前沿技术动态 (2026年2月20日 06:30更新)
 
 ### 端到端自动驾驶 (End-to-End)
 - 🆕 **AppleVLM** (arXiv 2602.04256, 2026年2月): 高级感知与规划增强的VLM端到端模型
@@ -276,6 +276,7 @@
 - 🆕 **ASHSR** (Neurocomputing 2026): 反遮挡采样+硬样本重加权，RayIoU指标SOTA
 - 🆕 **AD-LiST-JEPA** (arXiv 2602.12540, 2026年2月): 基于JEPA的自监督世界模型
   - LiDAR数据自监督学习，无需人工标注，用于占用补全和预测
+- 🆕 **ForecastOcc** (arXiv 2602.08006v1): 基于视觉的语义占用预测
 - **Tesla Occupancy Network** 升级到v3版本，新增时序融合和动态物体跟踪
 - **SparseOcc** (2025): 稀疏表示的Occpancy Network，全新架构设计
 - **GEOcc** (IEEE 2025): Geometrically Enhanced 3D Occupancy Network，几何增强
@@ -298,6 +299,7 @@
 - **2027-2028**: GM、 Rivian、Lucid、Porsche、Audi、Nissan等多家厂商计划推出L3
 
 ### 特斯拉 FSD V13/V14 最新进展 (2026年2月20日更新)
+- 🆕 **FSD每周迭代模式** (2026年2月19日): Musk宣布每7天发布新版本，每7天可见改进
 - 🆕 **FSD每周迭代** (2026年2月19日): Musk宣布每7天可见改进，训练管线完全自动化
 - 🆕 **FSD累计80亿+英里**: 2个月内新增10亿英里，目标100亿英里启动无监督Robotaxi
 - 🆕 **两档FSD服务**: 已停止一次性购买，仅保留订阅制；未来分Supervised/Unsupervised两档
