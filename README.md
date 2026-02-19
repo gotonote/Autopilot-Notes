@@ -184,12 +184,12 @@
 | 厂商 | 方案 | 算力 | 特点 |
 |:-----|:-----|:-----|:-----|
 | 华为 | ADS 4.0 | 400+ TOPS | 激光雷达融合，L3商用，全栈自研 |
-| 小鹏 | XNGP 4.0 | 508 TOPS | 城市NOA领先，端到端大模型 |
+| 小鹏 | XNGP 5.0 | 508 TOPS | 城市NOA领先，端到端+VLA大模型 |
 | 蔚来 | NAD 3.0 | 1016 TOPS | 四Orin X，硬件领先 |
-| 理想 | AD Max 3.0 | 508 TOPS | 家庭定位，舒适度高 |
-| 小马智行 | PonyAlpha | 508 TOPS | L4级自动驾驶，Robotaxi |
-| 小米 | Xiaomi Pilot 3.5 | 508 TOPS | 生态优势，快速迭代，L3测试中 |
-| 特斯拉 | FSD v14.x | 720 TOPS | 纯视觉，端到端 |
+| 理想 | AD Max 4.0 | 508 TOPS | 家庭定位，端到端架构 |
+| 小马智行 | PonyAlpha | 508 TOPS | L4级自动驾驶，Robotaxi出海 |
+| 小米 | Xiaomi Pilot 4.0 | 508 TOPS | 生态优势，快速迭代，L3测试中 |
+| 特斯拉 | FSD v13/v14 | 720 TOPS | 纯视觉，端到端，取消beta |
 
 ### 智驾芯片格局 (2026)
 
@@ -201,6 +201,25 @@
 | 地平线 | 征程6P | 560 TOPS | 7nm |
 | 高通 | Snapdragon Flex | 600 TOPS | 4nm |
 | 小米 | 澎湃C1 | 508 TOPS | 7nm |
+
+---
+
+## 🔥 前沿技术动态 (2026年2月)
+
+### 端到端自动驾驶 (End-to-End)
+- 特斯拉FSD v14全面采用端到端架构
+- 百度Apollo开源EDU训练框架
+- 小鹏、华为、理想全面跟进端到端路线
+
+### VLA (Vision-Language-Action)
+- Waymo推出多模态驾驶助手
+- 小鹏XGPT 4.0支持自然语言交互
+- 特斯拉FSD v15将整合VLA能力
+
+### Occupancy Network
+- Tesla Occupancy v3升级，支持时序融合
+- 华为ADS 3.0采用Occ 2.0，精度提升40%
+- 《SparseOcc》论文提出新架构
 
 ---
 
