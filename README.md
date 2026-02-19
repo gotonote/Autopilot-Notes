@@ -140,14 +140,11 @@
 ### **8. [工具](./ch08_工具/)**  
 |---- 8.1 [可视化](./ch08_工具/8.1%20可视化/)  
 |---- 8.2 [仿真](./ch08_工具/8.2%20仿真/)  
-|&nbsp;&nbsp;&nbsp;&nbsp;|---- [8.2.1 CARLA仿真](./ch08_工具/8.2%20仿真/8.2.1%20Carla仿真/readme.md)  
-|&nbsp;&nbsp;&nbsp;&nbsp;|---- [8.2.2 PreScan仿真](./ch08_工具/8.2%20仿真/8.2.2%20PreScan仿真/readme.md)  
+|&nbsp;&nbsp;&nbsp;&nbsp;|---- [8.2.1 CARLA仿真](./ch08_工具/8.2%20仿真/8.2.1%20Carla仿真/readme.md) - 安装配置、Python API、传感器配置、场景构建、实战案例  
+|&nbsp;&nbsp;&nbsp;&nbsp;|---- [8.2.2 PreScan仿真](./ch08_工具/8.2%20仿真/8.2.2%20PreScan仿真/readme.md) - 入门指南、场景构建、传感器配置、Simulink集成  
 |---- 8.3 [TensorRT加速](./ch08_工具/8.3%20TensorRT加速/)  
 |---- 8.4 [SNPE](./ch08_工具/8.4%20SNPE/)  
-|---- 8.5 [算法部署](./ch08_工具/8.5%20算法部署/readme.md)  
-|&nbsp;&nbsp;&nbsp;&nbsp;|---- TensorRT部署详解  
-|&nbsp;&nbsp;&nbsp;&nbsp;|---- ONNX Runtime部署  
-|&nbsp;&nbsp;&nbsp;&nbsp;|---- 智驾算法实战案例
+|---- 8.5 [算法部署](./ch08_工具/8.5%20算法部署/readme.md) - TensorRT部署详解、ONNX Runtime部署、智驾算法实战案例、BEVFormer部署
 
 ### **9. [厂商方案](./ch09_厂商方案/)**  
 |---- 9.1 [特斯拉 AI Day2022](./ch09_厂商方案/9.1%20特斯拉%20AI%20Day2022/)  
