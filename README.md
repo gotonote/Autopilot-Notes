@@ -238,6 +238,9 @@
 - **DriveLM** (NeurIPS 2023-2025): 视觉语言模型理解驾驶场景系列工作
 - **OpenDriveVLA**: 开源端到端VLA模型，GitHub: DriveVLA/OpenDriveVLA
 - **最新Survey**: arXiv 2506.24044 系统综述VLA模型在自动驾驶中的应用
+- **HiST-VLA** (arXiv 2602.07275): 分层时空Vision-Language-Action模型
+- **DriveMamba** (arXiv 2602.04392): 基于Mamba的高效端到端自动驾驶
+- **SteerVLA** (arXiv 2602.04006): 长尾驾驶场景的VLA模型
 
 ### Occupancy Network 最新论文/方案
 - **Tesla Occupancy Network** 升级到v3版本，新增时序融合和动态物体跟踪
@@ -249,6 +252,8 @@
 - **SAMOccNet** (ScienceDirect 2025): 基于SAM的周围语义占用网络
 - **华为ADS 3.0** 采用Occupancy Network 2.0，感知精度提升40%
 - **地平线Sparse4D v3** 引入Occupancy检测能力
+- **ResWorld** (arXiv 2602.02678): 端到端自动驾驶的时序残差世界模型
+- **AurigaNet** (arXiv 2602.02674): 城市驾驶感知的实时多任务网络
 
 ### L3级自动驾驶 (2026加速商用)
 - **华为ADS 4.0/4.1** 商用，支持高速/城市NCA
