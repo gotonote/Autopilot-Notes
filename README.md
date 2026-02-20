@@ -176,7 +176,7 @@
 
 ## 🔥 热门内容
 
-### ADAS 厂商方案对比 (2026年2月)
+### ADAS 厂商方案对比 (2026年2月) 🔥
 
 | 厂商 | 方案 | 算力 | 特点 |
 |:-----|:-----|:-----|:-----|
@@ -207,36 +207,27 @@
 
 ---
 
-## 🔥 前沿技术动态 (2026年2月21日 09:29更新)
+## 🔥 前沿技术动态 (2026年2月20日 10:17更新)
 
-### 端到端自动驾驶 (End-to-End)
-- 🆕 **HiST-VLA** (arXiv 2602.13329, 2026年2月11日): 分层时空VLA新SOTA
-  - 解决VLA三大痛点：数值推理不精确、3D空间感知弱、上下文敏感性高
-  - 动态Token稀疏化 + 分层Transformer规划器 + 动态潜在正则化
-  - NAVSIM v2 Navtest EPDMS 88.6, Navhard EPDMS 50.9 (SOTA)
-- 🆕 **DriveMamba** (arXiv 2602.04392, 2026年2月): 基于Mamba的高效端到端自动驾驶
-  - State Space Model (SSM) 应用于自动驾驶
-  - 高效的长序列处理能力，超越Transformer效率
-- 🆕 **DriveWorld-VLA** (arXiv 2602.01906, 2026年2月6日): 统一潜空间世界建模
-  - VLA与World Model结合，增强决策和前瞻想象能力
-- 🆕 **Found-RL** (arXiv 2602.02910, 2026年2月10日): 基础模型增强的强化学习
-  - 基础模型增强的RL用于自动驾驶
-- 🆕 **ResWorld** (arXiv 2602.02678, 2026年2月11日): 时序残差世界模型
-  - 驾驶场景世界模型提升端到端规划精度
-- 🆕 **PredMapNet** (arXiv 2602.11696, 2026年2月18日): 未来和历史推理的在线HD矢量地图构建
-- 🆕 **AppleVLM** (arXiv 2602.04256, 2026年2月20日): 端到端自动驾驶新范式
+### 端到端自动驾驶 (End-to-End) 🔥
+- 🆕 **AppleVLM** (arXiv 2602.04256, 2026年2月20日): Apple端到端自动驾驶新范式
   - 提出高级感知与规划增强的VLM模型，用于鲁棒端到端驾驶
   - 创新视觉编码器：利用可变形Transformer融合多视角图像的时空信息
   - 分层Chain-of-Thought微调VLM解码器，整合视觉/语言/规划特征输出驾驶航点
   - 在CARLA基准测试中达到SOTA
   - 论文：https://arxiv.org/abs/2602.04256
-- 🆕 **AppleVLM** (arXiv 2602.01844, 2026年2月4日): Apple端到端自动驾驶
-  - 高级感知与规划增强的VLM
-- 🆕 **SToRM** (arXiv 2602.02696, 2026年2月12日): 多模态LLM的高效token压缩
-- 🆕 **MASAR** (arXiv 2602.05306, 2026年2月13日): 运动外观联合检测和轨迹预测
+- 🆕 **HiST-VLA** (arXiv 2602.13329, 2026年2月11日): 分层时空VLA新SOTA
+  - 解决VLA三大痛点：数值推理不精确、3D空间感知弱、上下文敏感性高
+  - 动态Token稀疏化 + 分层Transformer规划器 + 动态潜在正则化
+  - NAVSIM v2 Navtest EPDMS 88.6, Navhard EPDMS 50.9 (SOTA)
 - 🆕 **Waypoint-Action Gap 研究** (arXiv 2602.06214, 2026年2月21日)
   - 首次系统性分析端到端自动驾驶中航点-动作差距问题
   - 提出基于扩散的端到端动作预测方法
+- 🆕 **DriveMamba** (arXiv 2602.04392, 2026年2月): 基于Mamba的高效端到端自动驾驶
+  - State Space Model (SSM) 应用于自动驾驶
+  - 高效的长序列处理能力，超越Transformer效率
+- 🆕 **DriveWorld-VLA** (arXiv 2602.01906, 2026年2月6日): 统一潜空间世界建模
+- 🆕 **PredMapNet** (arXiv 2602.11696, 2026年2月18日): 未来和历史推理的在线HD矢量地图构建
 - 🆕 **Musk宣布FSD每周迭代** (2026年2月19日)：训练管线完全自动化，承诺每7天可见改进
 - 🆕 **FSD累计里程突破80亿英里** (2026年2月18日)，不到2个月新增10亿英里
 - **特斯拉FSD V14** 正式发布，CEO Elon Musk称之为"sentient"和"mind-blowing"
@@ -251,9 +242,8 @@
 - 小马智行PonyAlpha 7.0采用端到端+VLA融合架构，Uber签署独家合作协议
 - 商汤推出UniAD端到端自动驾驶模型
 - **Waymo** 开放2025端到端驾驶挑战赛，AutoVLA获RFS Spotlight最高分
-- **2026年展望**: 主流厂商全面转向端到端架构，城市NOA加速落地
 
-### VLA (Vision-Language-Action)
+### VLA (Vision-Language-Action) 🔥
 - 🆕 **SteerVLA** (arXiv 2602.04006, 2026年2月9日): 长尾驾驶场景的VLA模型
   - Stanford、UC Berkeley、MIT、Google DeepMind联合出品
   - 解决VLA在长尾驾驶场景中的挑战
