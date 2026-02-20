@@ -207,7 +207,7 @@
 
 ---
 
-## 🔥 前沿技术动态 (2026年2月20日 10:35更新)
+## 🔥 前沿技术动态 (2026年2月20日 11:14更新)
 
 ### 端到端自动驾驶 (End-to-End) 🔥
 - 🆕 **AppleVLM** (arXiv 2602.04256, 2026年2月20日): Apple端到端自动驾驶新范式
@@ -242,6 +242,17 @@
 - 小马智行PonyAlpha 7.0采用端到端+VLA融合架构，Uber签署独家合作协议
 - 商汤推出UniAD端到端自动驾驶模型
 - **Waymo** 开放2025端到端驾驶挑战赛，AutoVLA获RFS Spotlight最高分
+- 🆕 **DriveE2E** (CVPR 2026): 真实到仿真的端到端闭环评估基准
+  - 从100小时真实视频提取800个动态交通场景
+  - 创建15个真实路口的数字孪生资产
+  - 更真实反映实际驾驶性能
+- 🆕 **GTRS** (Navsim v2冠军): 扩散轨迹生成 + 词汇泛化技术
+  - 统一粗细粒度轨迹评估框架
+  - 即使次优传感器输入也能表现优异
+- 🆕 **ORION** (CVPR 2026): 视觉语言引导动作生成的端到端框架
+  - QT-Former聚合长期历史上下文
+  - 大语言模型进行驾驶场景推理
+  - Bench2Drive数据集77.74 DS, 54.62% SR
 
 ### VLA (Vision-Language-Action) 🔥
 - 🆕 **SteerVLA** (arXiv 2602.04006, 2026年2月9日): 长尾驾驶场景的VLA模型
@@ -253,6 +264,26 @@
 - 🆕 **DriveMamba** (arXiv 2602.04392, 2026年2月9日): Mamba架构的VLA
   - State Space Model应用于VLA任务
 - 🆕 **DriveWorld-VLA** (arXiv 2602.01906, 2026年2月6日): 统一潜空间世界建模VLA
+- 🆕 **VLA-R** (arXiv 2026): 开放世界端到端自动驾驶的视觉-语言动作检索
+  - 视觉-语言对比学习对齐视觉-语言和动作嵌入
+  - 在非结构化、未见过的环境中展现强泛化性能
+- 🆕 **DriveMoE** (arXiv 2026): 混合专家VLA模型
+  - 场景专用Vision MoE + 技能专用Action MoE
+  - 动态选择相关相机注意力
+  - Bench2Drive闭环评估SOTA
+- 🆕 **E3AD** (arXiv 2026): 情感感知VLA模型
+  - 连续Valence-Arousal-Dominance (VAD)情感模型
+  - 双路径空间推理模块融合自我中心和环境中心视图
+  - 更以人为中心的驾驶体验
+- 🆕 **AutoVLA** (arXiv 2026): 自适应推理+强化微调VLA
+  - 统一推理和动作生成的单自回归模型
+  - 快思考（仅轨迹）和慢思考（思维链推理）双模式
+  - GRPO强化微调减少不必要的推理
+- 🆕 **OpenDriveVLA** (arXiv 2026): 开源VLA模型
+  - 分层视觉-语言对齐过程
+  - 结构化智能体-环境自我交互建模
+  - nuScenes数据集SOTA
+- 🆕 **Impromptu VLA** (CVPR 2026): 开源权重+开源数据的VLA
 - 🆕 **2026年被预测为自动驾驶突破之年**：VLA技术规模化应用是关键驱动力
 - 🆕 **ICLR 2026 VLA研究爆发式增长**：VLA领域投稿量从2025年的9篇激增到2026年的164篇，增长18倍
 - 🆕 **ICLR 2026重点研究方向**：
@@ -308,6 +339,9 @@
 - **华为ADS 3.0** 采用Occupancy Network 2.0，感知精度提升40%
 - **地平线Sparse4D v3** 引入Occupancy检测能力
 - **Occ3D** (CVPR 2026): 大规模3D Occupancy预测 benchmark
+- 🆕 **Scaling Up Occupancy-centric Driving Scene Generation** (CVPR 2026): 以占用为中心的驾驶场景生成数据集和方法
+- **HOPE** (CVPR 2022): 分层时空网络占用流预测，Waymo Open Dataset冠军
+- **OFMPNet** (2025): 端到端占用和流预测网络，Waymo基准SOTA
 
 ### L3级自动驾驶 (2026加速商用)
 - **华为ADS 4.0/4.1** 商用，支持高速/城市NCA
