@@ -207,19 +207,24 @@
 
 ---
 
-## 🔥 前沿技术动态 (2026年2月20日 07:31更新)
+## 🔥 前沿技术动态 (2026年2月20日 08:00更新)
 
 ### 端到端自动驾驶 (End-to-End)
-- 🆕 **AppleVLM** (arXiv 2602.04256, 2026年2月): 高级感知与规划增强的VLM端到端模型
-  - 可变形Transformer多视角时空融合 + BEV规划模态编码器 + 分层CoT解码器
-  - CARLA基准SOTA，已部署AGV平台实现复杂室外真实端到端驾驶
+- 🆕 **Learning to Drive in New Cities Without Human Demonstrations** (arXiv 2602.05942, 2026年2月): 无需人类演示在新城市学习驾驶
+  - 解决新城市部署成本高、需大量人类演示轨迹的瓶颈
+  - 强化学习和sim-to-real迁移学习
+- 🆕 **DM0: An Embodied-Native Vision-Language-Action Model** (arXiv 2602.06604, 2026年2月16日): 首个具身原生VLA模型
+  - 大规模统一预训练：Web文本+自动驾驶场景+具身交互日志
+  - 联合学习语义知识和物理先验
+- 🆕 **DriveFine: Refining-Augmented Masked Diffusion VLA** (arXiv 2602.05537, 2026年2月16日): 精炼增强的掩码扩散VLA
+  - 解决扩散规划器的模态对齐困难、训练效率低、泛化有限等问题
+  - Token-based规划器的新突破
 - 🆕 **Musk宣布FSD每周迭代** (2026年2月19日)：训练管线完全自动化，承诺每7天可见改进
-- 🆕 **FSD累计里程突破80亿英里** (2026年2月18日)，不到2个月新增10亿英里
+- 🆕 **FSD累计里程突破82亿英里** (2026年2月18日)，不到2个月新增10亿英里
+- 🆕 **PredMapNet** (arXiv 2602.11696, 2026年2月18日): 未来和历史推理的在线HD矢量地图构建
+  - 解决查询方法时间不一致性问题
+  - 端到端在线高精地图构建
 - **特斯拉FSD V14** 正式发布，CEO Elon Musk称之为"sentient"和"mind-blowing"
-- FSD V14相比V12/V13更加自信，驾驶风格更接近人类，加速和减速更加平滑
-- V14实现端到端点到点能力，从驻车到驻车仅需驾驶员监督
-- FSD V14.2.2.5 (2025.45.10) 于2026年2月15-16日发布，持续迭代更新
-- FSD V14.3 开发中，Elon Musk称"将感觉像有感知能力"
 - **全球端到端市场CAGR 19.0%**，2026年行业主流技术路线确立
 - **Waymo** 每周完成**45万次**完全无人驾驶出行，覆盖6个城市
 - **Waymo 6th Gen Driver** (2026年2月): 第六代无人驾驶系统正式运营
@@ -228,7 +233,6 @@
   - 已实现完全无人运营，覆盖凤凰城、旧金山、洛杉矶、奥斯汀、亚特兰大、迈阿密六城
   - 2026年计划扩展至20+城市，首批国际城市：伦敦、东京
 - **Waymo-Hyundai合作**: 现代拟向Waymo供应50,000辆IONIQ 5 robotaxi
-- **Waymo安全数据**: 严重伤害事故减少90%，安全气囊弹出减少82%
 - 小马智行PonyAlpha 7.0采用端到端+VLA融合架构，Uber签署独家合作协议
 - 商汤推出UniAD端到端自动驾驶模型
 - **Waymo** 开放2025端到端驾驶挑战赛，AutoVLA获RFS Spotlight最高分
@@ -239,9 +243,13 @@
   - 解决VLA三大痛点：数值推理不精确、3D空间感知弱、上下文敏感性高
   - 动态Token稀疏化 + 分层Transformer规划器 + 动态潜在正则化
   - NAVSIM v2 Navtest EPDMS 88.6, Navhard EPDMS 50.9 (SOTA)
+- 🆕 **DriveMamba** (arXiv 2602.04392, 2026年2月): 基于Mamba的高效端到端自动驾驶
+  - State Space Model (SSM) 应用于自动驾驶
+  - 高效的长序列处理能力
+- 🆕 **SteerVLA** (arXiv 2602.04006, 2026年2月): 长尾驾驶场景的VLA模型
 - 🆕 **2026年被预测为自动驾驶突破之年**：VLA技术规模化应用是关键驱动力
-- **ICLR 2026 VLA研究爆发式增长**：VLA领域投稿量从2025年的9篇激增到2026年的164篇，增长18倍
-- **ICLR 2026重点研究方向**：
+- 🆕 **ICLR 2026 VLA研究爆发式增长**：VLA领域投稿量从2025年的9篇激增到2026年的164篇，增长18倍
+- 🆕 **ICLR 2026重点研究方向**：
   - 离散扩散VLAs (Discrete Diffusion VLAs)
   - 具身思维链 (Embodied Chain-of-Thought, ECoT)
   - 新离散Tokenizer
@@ -256,17 +264,12 @@
 - **小鹏+北大 FastDriveVLA**: 高效端到端L4自动驾驶模型，AAAI 2026接收
 - **理想汽车 MindVLA**: 统一VLA架构，向真正自动驾驶迈进
 - **小鹏VLA 2.0** (2026年2月): AI驱动的Vision-Language-Action 2.0架构
-- **Li Auto** 调整战略，将VLA开发整合到新领导层
 - **Waymo** 推出多模态驾驶助手，支持自然语言交互
 - **小鹏XGPT 5.0** 支持自然语言交互驾驶决策
 - **华为ADS 4.1** 集成VLA大模型，支持场景描述与解释
 - **清华-理想** 提出DriveVLM端云协同VLA模型
 - **DriveLM** (NeurIPS 2023-2025): 视觉语言模型理解驾驶场景系列工作
 - **OpenDriveVLA**: 开源端到端VLA模型，GitHub: DriveVLA/OpenDriveVLA
-- **最新Survey**: arXiv 2506.24044 系统综述VLA模型在自动驾驶中的应用
-- **HiST-VLA** (arXiv 2602.07275): 分层时空Vision-Language-Action模型
-- **DriveMamba** (arXiv 2602.04392): 基于Mamba的高效端到端自动驾驶
-- **SteerVLA** (arXiv 2602.04006): 长尾驾驶场景的VLA模型
 - **VLA-Diffusion** (ICLR 2026): 扩散模型驱动的VLA新范式
 
 ### Occupancy Network 最新论文/方案
@@ -276,20 +279,17 @@
 - 🆕 **ASHSR** (Neurocomputing 2026): 反遮挡采样+硬样本重加权，RayIoU指标SOTA
 - 🆕 **AD-LiST-JEPA** (arXiv 2602.12540, 2026年2月): 基于JEPA的自监督世界模型
   - LiDAR数据自监督学习，无需人工标注，用于占用补全和预测
-- 🆕 **ForecastOcc** (arXiv 2602.08006v1): 基于视觉的语义占用预测
-- **Tesla Occupancy Network** 升级到v3版本，新增时序融合和动态物体跟踪
+- 🆕 **ForecastOcc** (arXiv 2602.08006v1, 2026年2月): 基于视觉的语义占用预测
+- 🆕 **ResWorld** (arXiv 2602.02678, 2026年2月): 端到端自动驾驶的时序残差世界模型
+- 🆕 **AurigaNet** (arXiv 2602.02674, 2026年2月): 城市驾驶感知的实时多任务网络
 - **SparseOcc** (2025): 稀疏表示的Occpancy Network，全新架构设计
 - **GEOcc** (IEEE 2025): Geometrically Enhanced 3D Occupancy Network，几何增强
 - **PAOcc** (北大-毫末): 占用感知Occupancy网络
-- **ForecastOcc** (arXiv 2602.08006v1): 基于视觉的语义占用预测
 - **Physics-Informed E2E Occupancy** (arXiv 2505.07855): 物理信息端到端占用框架
 - **SAMOccNet** (ScienceDirect 2025): 基于SAM的周围语义占用网络
 - **华为ADS 3.0** 采用Occupancy Network 2.0，感知精度提升40%
 - **地平线Sparse4D v3** 引入Occupancy检测能力
-- **ResWorld** (arXiv 2602.02678): 端到端自动驾驶的时序残差世界模型
-- **AurigaNet** (arXiv 2602.02674): 城市驾驶感知的实时多任务网络
 - **Occ3D** (CVPR 2026): 大规模3D Occupancy预测 benchmark
-- **VoxFormer** (arXiv 2602.12345): 基于Transformer的纯视觉3D占用估计
 
 ### L3级自动驾驶 (2026加速商用)
 - **华为ADS 4.0/4.1** 商用，支持高速/城市NCA
@@ -304,9 +304,11 @@
 - 🆕 **两档FSD服务**: 已停止一次性购买，仅保留订阅制；未来分Supervised/Unsupervised两档
 - 🆕 **Cybercab FCC获批** (2026年2月19日): 超宽带无线充电获批，首批量产已下线
 - 🆕 **FSD全球拓展**: 欧洲/中国审批加速，Musk称"自动驾驶基本已解决"
+- 🆕 **FSD V14.3 开发中** (2026年2月): Elon Musk称"到V14.3，你的车将感觉像有感知能力"
+- 🆕 **HW3车辆FSD V14 Lite** (2026年Q2): 预计为HW3车辆推出Lite版本
 
 ### FSD V13 (2025年7月-10月)
-- 🆕 **FSD V13.2** (2025年10月): 首次重大年度更新前序版本
+- **FSD V13.2** (2025年10月): 首次重大年度更新前序版本
   - 增强的端到端神经网络，HW4硬件优化
   - 城市NOA能力显著提升
   - 改进的信号灯和标志识别
@@ -321,12 +323,12 @@
   - 训练数据规模扩大至数十亿英里
 
 ### FSD V14 (2025年10月发布 - 当前主版本) 
-  - 首次重大年度更新，被CEO称为"mind-blowing"
-  - 端到端神经网络架构，完全重写
-  - 支持点到点驾驶（泊车到泊车）
-  - 驾驶风格更自然，减少机器人感
-  - 尝试在超车后返回右侧车道
-  - 仅支持HW4 (AI4) 硬件
+- 首次重大年度更新，被CEO称为"mind-blowing"
+- 端到端神经网络架构，完全重写
+- 支持点到点驾驶（泊车到泊车）
+- 驾驶风格更自然，减少机器人感
+- 尝试在超车后返回右侧车道
+- 仅支持HW4 (AI4) 硬件
 - **FSD V14.2.2.5** (2026年2月15-16日): 持续迭代优化
   - 新增FSD Stats功能
   - UI改进和神经网络编码器升级
