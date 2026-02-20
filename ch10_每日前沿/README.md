@@ -9,7 +9,7 @@
 | 日期 | 标题 | 关键词 |
 |------|------|--------|
 | 02-21 | [2026-02-21.md](./2026-02-21.md) | AppleVLM、NVIDIA Physical AI、FSD每周迭代、80亿英里 |
-| 02-20 | [2026-02-20.md](./2026-02-20.md) | 特斯拉FSD V13、VLA、Occupancy Network、端到端 |
+| 02-20 | [2026-02-20.md](./2026-02-20.md) | Tesla FSD V14免费试用、AsyncVLA、VLA、Occupancy Network、端到端 |
 | 02-19 | [2026-02-19.md](./2026-02-19.md) | 特斯拉FSD、Waymo、L3政策、Cybercab |
 | 02-18 | [2026-02-18.md](./2026-02-18.md) | 特斯拉FSD、百度Apollo、Waymo |
 | 02-14 | [2026-02-14.md](./2026-02-14.md) | 特斯拉FSD、百度Apollo、Waymo |
