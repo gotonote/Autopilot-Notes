@@ -207,23 +207,29 @@
 
 ---
 
-## 🔥 前沿技术动态 (2026年2月20日 08:00更新)
+## 🔥 前沿技术动态 (2026年2月20日 08:19更新)
 
 ### 端到端自动驾驶 (End-to-End)
-- 🆕 **Learning to Drive in New Cities Without Human Demonstrations** (arXiv 2602.05942, 2026年2月): 无需人类演示在新城市学习驾驶
-  - 解决新城市部署成本高、需大量人类演示轨迹的瓶颈
-  - 强化学习和sim-to-real迁移学习
-- 🆕 **DM0: An Embodied-Native Vision-Language-Action Model** (arXiv 2602.06604, 2026年2月16日): 首个具身原生VLA模型
-  - 大规模统一预训练：Web文本+自动驾驶场景+具身交互日志
-  - 联合学习语义知识和物理先验
-- 🆕 **DriveFine: Refining-Augmented Masked Diffusion VLA** (arXiv 2602.05537, 2026年2月16日): 精炼增强的掩码扩散VLA
-  - 解决扩散规划器的模态对齐困难、训练效率低、泛化有限等问题
-  - Token-based规划器的新突破
-- 🆕 **Musk宣布FSD每周迭代** (2026年2月19日)：训练管线完全自动化，承诺每7天可见改进
-- 🆕 **FSD累计里程突破82亿英里** (2026年2月18日)，不到2个月新增10亿英里
+- 🆕 **HiST-VLA** (arXiv 2602.13329, 2026年2月11日): 分层时空VLA新SOTA
+  - 解决VLA三大痛点：数值推理不精确、3D空间感知弱、上下文敏感性高
+  - 动态Token稀疏化 + 分层Transformer规划器 + 动态潜在正则化
+  - NAVSIM v2 Navtest EPDMS 88.6, Navhard EPDMS 50.9 (SOTA)
+- 🆕 **DriveMamba** (arXiv 2602.04392, 2026年2月): 基于Mamba的高效端到端自动驾驶
+  - State Space Model (SSM) 应用于自动驾驶
+  - 高效的长序列处理能力，超越Transformer效率
+- 🆕 **DriveWorld-VLA** (arXiv 2602.01906, 2026年2月6日): 统一潜空间世界建模
+  - VLA与World Model结合，增强决策和前瞻想象能力
+- 🆕 **Found-RL** (arXiv 2602.02910, 2026年2月10日): 基础模型增强的强化学习
+  - 基础模型增强的RL用于自动驾驶
+- 🆕 **ResWorld** (arXiv 2602.02678, 2026年2月11日): 时序残差世界模型
+  - 驾驶场景世界模型提升端到端规划精度
 - 🆕 **PredMapNet** (arXiv 2602.11696, 2026年2月18日): 未来和历史推理的在线HD矢量地图构建
-  - 解决查询方法时间不一致性问题
-  - 端到端在线高精地图构建
+- 🆕 **AppleVLM** (arXiv 2602.01844, 2026年2月4日): Apple端到端自动驾驶
+  - 高级感知与规划增强的VLM
+- 🆕 **SToRM** (arXiv 2602.02696, 2026年2月12日): 多模态LLM的高效token压缩
+- 🆕 **MASAR** (arXiv 2602.05306, 2026年2月13日): 运动外观联合检测和轨迹预测
+- 🆕 **Musk宣布FSD每周迭代** (2026年2月19日)：训练管线完全自动化，承诺每7天可见改进
+- 🆕 **FSD累计里程突破90亿英里** (2026年2月18日)，不到2个月新增10亿英里
 - **特斯拉FSD V14** 正式发布，CEO Elon Musk称之为"sentient"和"mind-blowing"
 - **全球端到端市场CAGR 19.0%**，2026年行业主流技术路线确立
 - **Waymo** 每周完成**45万次**完全无人驾驶出行，覆盖6个城市
@@ -239,14 +245,15 @@
 - **2026年展望**: 主流厂商全面转向端到端架构，城市NOA加速落地
 
 ### VLA (Vision-Language-Action)
-- 🆕 **HiST-VLA** (arXiv 2602.13329, 2026年2月11日): 分层时空VLA新SOTA
-  - 解决VLA三大痛点：数值推理不精确、3D空间感知弱、上下文敏感性高
-  - 动态Token稀疏化 + 分层Transformer规划器 + 动态潜在正则化
-  - NAVSIM v2 Navtest EPDMS 88.6, Navhard EPDMS 50.9 (SOTA)
-- 🆕 **DriveMamba** (arXiv 2602.04392, 2026年2月): 基于Mamba的高效端到端自动驾驶
-  - State Space Model (SSM) 应用于自动驾驶
-  - 高效的长序列处理能力
-- 🆕 **SteerVLA** (arXiv 2602.04006, 2026年2月): 长尾驾驶场景的VLA模型
+- 🆕 **SteerVLA** (arXiv 2602.04006, 2026年2月9日): 长尾驾驶场景的VLA模型
+  - Stanford、UC Berkeley、MIT、Google DeepMind联合出品
+  - 解决VLA在长尾驾驶场景中的挑战
+- 🆕 **HiST-VLA** (arXiv 2602.13329, 2026年2月11日): 分层时空VLA
+  - 动态Token稀疏化 + 分层Transformer规划器
+  - NAVSIM v2 Navtest EPDMS 88.6 (SOTA)
+- 🆕 **DriveMamba** (arXiv 2602.04392, 2026年2月9日): Mamba架构的VLA
+  - State Space Model应用于VLA任务
+- 🆕 **DriveWorld-VLA** (arXiv 2602.01906, 2026年2月6日): 统一潜空间世界建模VLA
 - 🆕 **2026年被预测为自动驾驶突破之年**：VLA技术规模化应用是关键驱动力
 - 🆕 **ICLR 2026 VLA研究爆发式增长**：VLA领域投稿量从2025年的9篇激增到2026年的164篇，增长18倍
 - 🆕 **ICLR 2026重点研究方向**：
@@ -273,15 +280,19 @@
 - **VLA-Diffusion** (ICLR 2026): 扩散模型驱动的VLA新范式
 
 ### Occupancy Network 最新论文/方案
-- 🆕 **GaussianOcc3D** (arXiv 2601.22729, 2026年1月): 3D高斯表示替代体素/BEV
-  - 相机-LiDAR多模态融合，Gauss-Mamba Head线性复杂度全局建模
-  - 三大基准SOTA：Occ3D 49.4% / SurroundOcc 28.9% / SemanticKITTI 25.2%
-- 🆕 **ASHSR** (Neurocomputing 2026): 反遮挡采样+硬样本重加权，RayIoU指标SOTA
-- 🆕 **AD-LiST-JEPA** (arXiv 2602.12540, 2026年2月): 基于JEPA的自监督世界模型
-  - LiDAR数据自监督学习，无需人工标注，用于占用补全和预测
-- 🆕 **ForecastOcc** (arXiv 2602.08006v1, 2026年2月): 基于视觉的语义占用预测
-- 🆕 **ResWorld** (arXiv 2602.02678, 2026年2月): 端到端自动驾驶的时序残差世界模型
-- 🆕 **AurigaNet** (arXiv 2602.02674, 2026年2月): 城市驾驶感知的实时多任务网络
+- 🆕 **ForecastOcc** (arXiv 2602.08006, 2026年2月8日): 基于视觉的语义占用预测
+  - 从单目图像预测未来语义占用
+- 🆕 **Rebenchmarking无监督单目3D占用预测** (arXiv 2602.06622, 2026年2月6日)
+  - 解决单目图像推断3D结构，尤其是遮挡区域的挑战
+- 🆕 **VOIC** (arXiv 2512.20355, 2025年12月21日): 可见-遮挡解耦的单目3D语义场景补全
+- 🆕 **OWL** (arXiv 2512.02478, 2025年12月5日): 无监督3D目标检测
+  - 基于占用的引导预热和大模型先验推理
+- 🆕 **HENet++** (arXiv 2511.06158, 2025年11月10日): 混合编码和多任务学习
+- 🆕 **GTAD** (arXiv 2507.16204, 2025年7月): 全局时序聚合去噪学习
+- 🆕 **SDGOCC** (arXiv 2507.09624, 2025年7月): 语义深度引导的BEV变换
+- 🆕 **FMOcc** (arXiv 2507.02906, 2025年7月): TPV驱动的流匹配3D占用预测
+- 🆕 **MinkOcc** (arXiv 2504.02755, 2025年4月): 实时标签高效语义占用预测
+- 🆕 **TGP** (arXiv 2503.18441, 2025年3月): 3D高斯和稀疏点的双模态占用预测
 - **SparseOcc** (2025): 稀疏表示的Occpancy Network，全新架构设计
 - **GEOcc** (IEEE 2025): Geometrically Enhanced 3D Occupancy Network，几何增强
 - **PAOcc** (北大-毫末): 占用感知Occupancy网络
@@ -300,12 +311,21 @@
 
 ### 特斯拉 FSD V13/V14 最新进展 (2026年2月20日更新)
 - 🆕 **FSD每周迭代模式** (2026年2月19日): Musk宣布每7天发布新版本，每7天可见改进，训练管线完全自动化
-- 🆕 **FSD累计82亿+英里**: 2个月内新增10亿英里，目标100亿英里启动无监督Robotaxi
+- 🆕 **FSD累计90亿+英里**: 2个月内新增10亿英里，目标100亿英里启动无监督Robotaxi
 - 🆕 **两档FSD服务**: 已停止一次性购买，仅保留订阅制；未来分Supervised/Unsupervised两档
 - 🆕 **Cybercab FCC获批** (2026年2月19日): 超宽带无线充电获批，首批量产已下线
 - 🆕 **FSD全球拓展**: 欧洲/中国审批加速，Musk称"自动驾驶基本已解决"
 - 🆕 **FSD V14.3 开发中** (2026年2月): Elon Musk称"到V14.3，你的车将感觉像有感知能力"
 - 🆕 **HW3车辆FSD V14 Lite** (2026年Q2): 预计为HW3车辆推出Lite版本
+- 🆕 **Tesla向CPUC提交文件** (2026年2月13日): 承认Robotaxi仍依赖车内司机和远程操作员
+  - 奥斯汀约42辆车，可用率低于20%
+  - 远程操作员位于奥斯汀和Bay Area
+  - Tesla辩称多层人工监督模式比Waymo更可靠
+- 🆕 **Cybercab量产进展** (2026年2月17日):
+  - 首批量产车在Giga Texas下线
+  - 将采用UWB无线充电，无需人工介入
+  - 预计2026年4月开始量产爬坡
+  - 仍将保留传统NACS充电口
 
 ### FSD V13 (2025年7月-10月)
 - **FSD V13.2** (2025年10月): 首次重大年度更新前序版本
