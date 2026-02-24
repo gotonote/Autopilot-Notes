@@ -8,6 +8,7 @@
 
 | 日期 | 标题 | 关键词 |
 |------|------|--------|
+| 02-24 | [2026-02-24.md](./2026-02-24.md) | CARLA仿真、Python API、传感器配置、Traffic Manager、ROS集成 |
 | 02-23 | [2026-02-23.md](./2026-02-23.md) | 小马智行、蔚来NOP+、小鹏XNGP、理想AD Max、华为乾崑智驾、小米汽车 |
 | 02-22 | [2026-02-22.md](./2026-02-22.md) | AppleVLM、NV Physical AI、FSD每周迭代、85亿英里、GaussianOcc3D |
 | 02-21 | [2026-02-21.md](./2026-02-21.md) | AppleVLM、GAIA-1、FSD V14每周迭代、80亿英里、GaussianOcc3D |
