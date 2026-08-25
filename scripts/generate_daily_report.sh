@@ -233,7 +233,12 @@ s = sys.stdin.read().strip()
 m = re.match(r"^```[a-zA-Z]*\s*\n", s)
 if m: s = s[m.end():]
 if s.endswith("```"): s = s[:-3]
-print(s.strip())
+# 去除 LLM 可能重复输出的头部（脚本会统一写入头部）
+lines = s.split("\n")
+while lines and (lines[0].startswith("# 无人驾驶技术日报") or lines[0].startswith("> 内容来源")):
+    lines.pop(0)
+s = "\n".join(lines).strip()
+print(s)
 ')"
   if [[ -z "$CONTENT" ]]; then
     echo "❌ LLM 返回内容为空" >&2
