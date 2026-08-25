@@ -6,6 +6,7 @@
 [<img src="https://img.shields.io/github/forks/gotonote/Autopilot-Notes?style=social" alt="Forks">](https://github.com/gotonote/Autopilot-Notes/fork)
 [<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">](./LICENSE)
 [<img src="https://img.shields.io/badge/Updated-Daily-brightgreen.svg" alt="Updated">](./ch10_每日前沿/)
+[<img src="https://img.shields.io/github/last-commit/gotonote/Autopilot-Notes?label=最近更新&color=blue" alt="Last Commit">](https://github.com/gotonote/Autopilot-Notes/commits/main)
 
 **系统性学习自动驾驶技术的开源知识库**
 
@@ -26,6 +27,30 @@
 - 🏭 **厂商方案** - 深度解析 Tesla、百度 Apollo、华为 ADS、小鹏 XNGP 等主流方案
 - 🛠️ **实战导向** - 包含仿真、部署、优化等工程实践内容
 - 🤝 **开源共建** - 欢迎提交 PR，一起完善文档
+
+---
+
+## 📅 每日前沿（每日 9:00 自动更新）
+
+> 🤖 由 GitHub Actions 自动生成，覆盖**厂商方案、实战内容、前沿跟踪、产品分析**四大方向，7 天前的日报自动归档。
+
+<!-- BEGIN_HOME_INDEX -->
+### 2026年2月
+
+| 日期 | 标题 | 关键词 |
+|------|------|--------|
+| 02-26 | [2026-02-26.md](./ch10_每日前沿/2026-02-26.md) | 特斯拉Tesla ADAS方案最新布局 |
+| 02-25 | [2026-02-25.md](./ch10_每日前沿/2026-02-25.md) | Tesla FSD V13全面推送 - 端到端大模型再升级 |
+| 02-24 | [2026-02-24.md](./ch10_每日前沿/2026-02-24.md) | CARLA仿真平台快速入门 |
+| 02-23 | [2026-02-23.md](./ch10_每日前沿/2026-02-23.md) | 小马智行获准开展无人驾驶重卡商业运营 |
+| 02-22 | [2026-02-22.md](./ch10_每日前沿/2026-02-22.md) | 特斯拉 FSD V13 最新进展 |
+| 02-21 | [2026-02-21.md](./ch10_每日前沿/2026-02-21.md) | 特斯拉 FSD V14 更新 |
+| 02-20 | [2026-02-20.md](./ch10_每日前沿/2026-02-20.md) | 端到端自动驾驶（End-to-End）最新进展 |
+
+> 📦 7 天前的日报已自动归档至 [archive](./ch10_每日前沿/archive/)
+<!-- END_HOME_INDEX -->
+
+> 🔗 查看完整日报索引与历史归档：[ch10_每日前沿](./ch10_每日前沿/)
 
 ---
 
@@ -162,18 +187,6 @@
 
 ---
 
-## 📅 每日前沿
-
-本仓库每日自动更新自动驾驶行业最新动态：
-
-- 📰 **日报** - 每日 9:00 自动推送 10 条核心价值信息
-- 📊 **周报** - 每周日生成技术趋势汇总
-- 🏷️ **标签** - 按公司、技术领域、类型分类
-
-> 🔗 查看最新日报：[ch10_每日前沿](./ch10_每日前沿/)
-
----
-
 ## 🔥 热门内容
 
 ### ADAS 厂商方案对比 (2026年2月) 🔥
@@ -204,16 +217,6 @@
 | 小米 | 澎湃C1 | 508 TOPS | 7nm |
 
 > 📢 **最新动态**：英伟达Thor芯片进入量产阶段，首批搭载车型包括极氪001、小鹏G9、比亚迪仰望U8
-
----
-
----
-
-## 📰 每日前沿
-
-每日更新自动驾驶领域最新动态、技术突破和行业新闻：
-
-👉 **[进入每日前沿 →](./ch10_每日前沿/)**
 
 ---
 

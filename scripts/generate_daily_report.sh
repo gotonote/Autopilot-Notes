@@ -55,7 +55,7 @@ from collections import OrderedDict
 
 daily_dir = sys.argv[1]
 archive_dir = os.path.join(daily_dir, "archive")
-readme = os.path.join(daily_dir, "README.md")
+repo_root = os.path.dirname(daily_dir)
 
 def list_dailies(d):
     return [f for f in glob.glob(os.path.join(d, "20??-??-??.md"))
@@ -79,40 +79,49 @@ all_files = list_dailies(daily_dir) + list_dailies(archive_dir)
 all_dates = sorted(date_of(f) for f in all_files)
 recent = sorted(list_dailies(daily_dir), key=date_of, reverse=True)[:7]
 
-months = OrderedDict()
-for f in recent:
-    d = date_of(f)
-    months.setdefault(d[:7], []).append((d, f))
+def build_table(prefix, heading):
+    months = OrderedDict()
+    for f in recent:
+        d = date_of(f)
+        months.setdefault(d[:7], []).append((d, f))
+    lines = []
+    if heading:
+        lines += ["## 📅 最近日报", ""]
+    for month, items in months.items():
+        lines.append(f"### {month[:4]}年{int(month[5:7])}月")
+        lines.append("")
+        lines.append("| 日期 | 标题 | 关键词 |")
+        lines.append("|------|------|--------|")
+        for d, f in items:
+            lines.append(f"| {d[5:]} | [{os.path.basename(f)}]({prefix}{os.path.basename(f)}) | {keywords(f)} |")
+        lines.append("")
+    return "\n".join(lines).rstrip()
 
-lines = ["## 📅 最近日报", ""]
-for month, items in months.items():
-    lines.append(f"### {month[:4]}年{int(month[5:7])}月")
-    lines.append("")
-    lines.append("| 日期 | 标题 | 关键词 |")
-    lines.append("|------|------|--------|")
-    for d, f in items:
-        lines.append(f"| {d[5:]} | [{os.path.basename(f)}](./{os.path.basename(f)}) | {keywords(f)} |")
-    lines.append("")
-lines.append("> 📦 7 天前的日报已自动归档至 [archive](./archive/)")
-table = "\n".join(lines)
+targets = [
+    {"readme": os.path.join(daily_dir, "README.md"),
+     "begin": "<!-- BEGIN_DAILY_INDEX -->", "end": "<!-- END_DAILY_INDEX -->",
+     "table": build_table("./", True) + "\n\n> 📦 7 天前的日报已自动归档至 [archive](./archive/)",
+     "count": True, "time": True},
+    {"readme": os.path.join(repo_root, "README.md"),
+     "begin": "<!-- BEGIN_HOME_INDEX -->", "end": "<!-- END_HOME_INDEX -->",
+     "table": build_table("./ch10_每日前沿/", False) + "\n\n> 📦 7 天前的日报已自动归档至 [archive](./ch10_每日前沿/archive/)",
+     "count": False, "time": False},
+]
 
-with open(readme, encoding="utf-8") as fh:
-    content = fh.read()
-
-marker_begin = "<!-- BEGIN_DAILY_INDEX -->"
-marker_end = "<!-- END_DAILY_INDEX -->"
-b = content.find(marker_begin)
-e = content.find(marker_end)
-if b != -1 and e != -1:
-    content = content[:b] + marker_begin + "\n" + table + "\n" + marker_end + content[e + len(marker_end):]
-
-content = re.sub(r"- \*\*总日报数\*\*：\d+篇", f"- **总日报数**：{len(all_files)}篇", content)
-if all_dates:
-    content = re.sub(r"- \*\*覆盖时间\*\*：[\d\-]+ 至今", f"- **覆盖时间**：{all_dates[0]} 至今", content)
-
-with open(readme, "w", encoding="utf-8") as fh:
-    fh.write(content)
-print(f"📝 索引已更新: {len(all_files)} 篇日报，最近 {len(recent)} 篇在索引")
+for t in targets:
+    with open(t["readme"], encoding="utf-8") as fh:
+        content = fh.read()
+    b = content.find(t["begin"])
+    e = content.find(t["end"])
+    if b != -1 and e != -1:
+        content = content[:b] + t["begin"] + "\n" + t["table"] + "\n" + t["end"] + content[e + len(t["end"]):]
+    if t["count"]:
+        content = re.sub(r"- \*\*总日报数\*\*：\d+篇", f"- **总日报数**：{len(all_files)}篇", content)
+    if t["time"] and all_dates:
+        content = re.sub(r"- \*\*覆盖时间\*\*：[\d\-]+ 至今", f"- **覆盖时间**：{all_dates[0]} 至今", content)
+    with open(t["readme"], "w", encoding="utf-8") as fh:
+        fh.write(content)
+    print(f"📝 索引已更新: {os.path.relpath(t['readme'], repo_root)}")
 PYEOF
 }
 
