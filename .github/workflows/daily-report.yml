@@ -2,8 +2,8 @@ name: 每日日报自动生成
 
 on:
   schedule:
-    # 每天 01:00 UTC = 北京时间 09:00
-    - cron: '0 1 * * *'
+    # 周一~周五 01:00 UTC = 北京时间 09:00（周末不更新）
+    - cron: '0 1 * * 1-5'
   workflow_dispatch:
     inputs:
       date:

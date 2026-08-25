@@ -5,7 +5,7 @@
 [<img src="https://img.shields.io/github/stars/gotonote/Autopilot-Notes?style=social" alt="Stars">](https://github.com/gotonote/Autopilot-Notes)
 [<img src="https://img.shields.io/github/forks/gotonote/Autopilot-Notes?style=social" alt="Forks">](https://github.com/gotonote/Autopilot-Notes/fork)
 [<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">](./LICENSE)
-[<img src="https://img.shields.io/badge/Updated-Daily-brightgreen.svg" alt="Updated">](./ch10_每日前沿/)
+[<img src="https://img.shields.io/badge/Updated-Weekdays-brightgreen.svg" alt="Updated">](./ch10_每日前沿/)
 [<img src="https://img.shields.io/github/last-commit/gotonote/Autopilot-Notes?label=最近更新&color=blue" alt="Last Commit">](https://github.com/gotonote/Autopilot-Notes/commits/main)
 
 **系统性学习自动驾驶技术的开源知识库**
@@ -23,14 +23,14 @@
 ### ✨ 特色
 
 - 📚 **体系完整** - 涵盖基础理论、硬件、算法、工具、实践等 10+ 章节
-- 🔄 **每日更新** - [技术日报](./ch10_每日前沿/) 每日 9:00 自动推送行业最新动态
+- 🔄 **每日更新** - [技术日报](./ch10_每日前沿/) 工作日 9:00 自动推送行业最新动态
 - 🏭 **厂商方案** - 深度解析 Tesla、百度 Apollo、华为 ADS、小鹏 XNGP 等主流方案
 - 🛠️ **实战导向** - 包含仿真、部署、优化等工程实践内容
 - 🤝 **开源共建** - 欢迎提交 PR，一起完善文档
 
 ---
 
-## 📅 每日前沿（每日 9:00 自动更新）
+## 📅 每日前沿（工作日 9:00 自动更新）
 
 > 🤖 由 GitHub Actions 自动生成，覆盖**厂商方案、实战内容、前沿跟踪、产品分析**四大方向，7 天前的日报自动归档。
 
