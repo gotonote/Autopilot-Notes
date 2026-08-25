@@ -1,0 +1,51 @@
+name: 每日日报自动生成
+
+on:
+  schedule:
+    # 每天 01:00 UTC = 北京时间 09:00
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '指定生成日期 YYYY-MM-DD（默认北京时间今天）'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-report
+  cancel-in-progress: false
+
+jobs:
+  daily-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 生成日报
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+          TODAY: ${{ github.event.inputs.date }}
+        run: bash scripts/generate_daily_report.sh
+
+      - name: 提交并推送
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "Autopilot Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "🈚️ 无变更（SKIP 或今日已生成），跳过提交"
+          else
+            git commit -m "🤖 自动更新 $(TZ='Asia/Shanghai' date +%Y-%m-%d) 无人驾驶技术日报"
+            git push
+            echo "🚀 已推送到 GitHub"
+          fi
