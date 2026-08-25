@@ -2,15 +2,21 @@
 
 # 🚗 自动驾驶笔记 Autopilot Notes
 
-[<img src="https://img.shields.io/github/stars/gotonote/Autopilot-Notes?style=social" alt="Stars">](https://github.com/gotonote/Autopilot-Notes)
-[<img src="https://img.shields.io/github/forks/gotonote/Autopilot-Notes?style=social" alt="Forks">](https://github.com/gotonote/Autopilot-Notes/fork)
-[<img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">](./LICENSE)
-[<img src="https://img.shields.io/badge/Updated-Weekdays-brightgreen.svg" alt="Updated">](./ch10_每日前沿/)
-[<img src="https://img.shields.io/github/last-commit/gotonote/Autopilot-Notes?label=最近更新&color=blue" alt="Last Commit">](https://github.com/gotonote/Autopilot-Notes/commits/main)
+> **系统性学习自动驾驶技术的开源知识库** ｜ 从感知、定位、规划到控制的全栈笔记，每日更新行业前沿
 
-**系统性学习自动驾驶技术的开源知识库**
+<p align="center">
 
-[📖 在线阅读](https://github.com/gotonote/Autopilot-Notes) | [🚀 快速开始](#快速开始) | [📅 每日前沿](./ch10_每日前沿/) | [📝 参与贡献](#参与贡献)
+[![Stars](https://img.shields.io/github/stars/gotonote/Autopilot-Notes?style=flat-square&logo=github&label=Stars&color=gold)](https://github.com/gotonote/Autopilot-Notes)
+[![Forks](https://img.shields.io/github/forks/gotonote/Autopilot-Notes?style=flat-square&logo=github&label=Forks&color=9cf)](https://github.com/gotonote/Autopilot-Notes/fork)
+[![Contributors](https://img.shields.io/github/contributors/gotonote/Autopilot-Notes?style=flat-square&logo=github&label=Contributors&color=orange)](https://github.com/gotonote/Autopilot-Notes/graphs/contributors)
+[![License](https://img.shields.io/github/license/gotonote/Autopilot-Notes?style=flat-square&label=License&color=blue)](./LICENSE)
+[![日报](https://img.shields.io/badge/日报-工作日更新-brightgreen?style=flat-square)](./ch10_每日前沿/)
+[![最近更新](https://img.shields.io/github/last-commit/gotonote/Autopilot-Notes?style=flat-square&label=最近更新)](https://github.com/gotonote/Autopilot-Notes/commits/main)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-ff69b4?style=flat-square)](https://github.com/gotonote/Autopilot-Notes/pulls)
+
+</p>
+
+**[🚀 快速开始](#快速开始)** · **[📊 内容概览](#内容概览)** · **[📚 目录结构](#目录结构)** · **[📅 每日前沿](./ch10_每日前沿/)** · **[🤝 参与贡献](#参与贡献)**
 
 </div>
 
