@@ -62,13 +62,6 @@
 └─────────────────────────────────────────────────────────┘
 ```
 
-### 同步更新
-
-| 平台 | 链接 |
-|------|------|
-| 🐙 GitHub | [github.com/gotonote/Autopilot-Notes](https://github.com/gotonote/Autopilot-Notes) |
-| 🐱 Gitee | [gitee.com/gotonote/Autopilot-Notes](https://gitee.com/gotonote/Autopilot-Notes) |
-
 ---
 
 ## 📊 内容概览
