@@ -156,7 +156,8 @@ fi
 YESTERDAY_SUMMARY=""
 YESTERDAY_FILE="$(ls "$DAILY_DIR"/20??-??-??.md 2>/dev/null | sort | tail -1 || true)"
 if [[ -n "$YESTERDAY_FILE" ]]; then
-  YESTERDAY_SUMMARY="$(head -c 3000 "$YESTERDAY_FILE")"
+  # 按字符安全截取（head -c 按字节切会切断多字节 UTF-8 字符）
+  YESTERDAY_SUMMARY="$(python3 -c 'import sys; s=sys.stdin.buffer.read().decode("utf-8", errors="replace"); print(s[:3000])' < "$YESTERDAY_FILE")"
   echo "🗞️ 参考昨日日报去重: $(basename "$YESTERDAY_FILE")"
 fi
 
@@ -188,6 +189,10 @@ else
 import json, os, sys
 import datetime
 direction, today, yesterday = sys.argv[1], sys.argv[2], sys.argv[3]
+# 防御性清洗：argv 可能带 surrogate（非法字节），先替换为安全字符
+direction = direction.encode("utf-8", "replace").decode("utf-8")
+today = today.encode("utf-8", "replace").decode("utf-8")
+yesterday = yesterday.encode("utf-8", "replace").decode("utf-8")
 wd = ["一", "二", "三", "四", "五", "六", "日"][datetime.date.fromisoformat(today).weekday()]
 system = (
     "你是《无人驾驶技术日报》的首席编辑，熟悉全球自动驾驶行业动态"
