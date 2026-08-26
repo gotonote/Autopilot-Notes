@@ -227,10 +227,18 @@ print(json.dumps({
 }, ensure_ascii=False))
 PYEOF
 
-  RESP="$(curl -sS -f --max-time 120 -X POST "${LLM_BASE_URL:-https://api.deepseek.com}/chat/completions" \
+  HTTP_CODE="$(curl -sS --max-time 120 -o /tmp/llm_resp.json -w '%{http_code}' -X POST "${LLM_BASE_URL:-https://api.deepseek.com}/chat/completions" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer ${LLM_API_KEY}" \
-    --data @/tmp/daily_payload.json)" || { echo "❌ LLM API 调用失败" >&2; exit 1; }
+    --data @/tmp/daily_payload.json)" || { echo "❌ LLM API 请求失败（网络/超时）" >&2; exit 1; }
+
+  if [[ "$HTTP_CODE" != "2"* ]]; then
+    echo "❌ LLM API 返回 HTTP $HTTP_CODE" >&2
+    echo "错误详情: $(head -c 2000 /tmp/llm_resp.json 2>/dev/null)" >&2
+    echo "请求地址: ${LLM_BASE_URL:-https://api.deepseek.com}/chat/completions" >&2
+    exit 1
+  fi
+  RESP="$(cat /tmp/llm_resp.json)"
 
   CONTENT="$(printf '%s' "$RESP" | jq -r '.choices[0].message.content // empty' | python3 -c '
 import sys, re
