@@ -10,7 +10,7 @@
 [![Forks](https://img.shields.io/github/forks/gotonote/Autopilot-Notes?style=flat-square&logo=github&label=Forks&color=9cf)](https://github.com/gotonote/Autopilot-Notes/fork)
 [![Contributors](https://img.shields.io/github/contributors/gotonote/Autopilot-Notes?style=flat-square&logo=github&label=Contributors&color=orange)](https://github.com/gotonote/Autopilot-Notes/graphs/contributors)
 [![License](https://img.shields.io/github/license/gotonote/Autopilot-Notes?style=flat-square&label=License&color=blue)](./LICENSE)
-[![日报](https://img.shields.io/badge/日报-每日更新-brightgreen?style=flat-square)](./ch10_每日前沿/)
+[![日报](https://img.shields.io/badge/日报-工作日更新-brightgreen?style=flat-square)](./ch10_每日前沿/)
 [![最近更新](https://img.shields.io/github/last-commit/gotonote/Autopilot-Notes?style=flat-square&label=最近更新)](https://github.com/gotonote/Autopilot-Notes/commits/main)
 [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-ff69b4?style=flat-square)](https://github.com/gotonote/Autopilot-Notes/pulls)
 
@@ -29,16 +29,16 @@
 ### ✨ 特色
 
 - 📚 **体系完整** - 涵盖基础理论、硬件、算法、工具、实践等 10+ 章节
-- 🔄 **每日更新** - [技术日报](./ch10_每日前沿/) 每天 19:00 自动推送行业最新动态
+- 🔄 **每日更新** - [技术日报](./ch10_每日前沿/) 工作日 19:00 自动推送行业最新动态
 - 🏭 **厂商方案** - 深度解析 Tesla、百度 Apollo、华为 ADS、小鹏 XNGP 等主流方案
 - 🛠️ **实战导向** - 包含仿真、部署、优化等工程实践内容
 - 🤝 **开源共建** - 欢迎提交 PR，一起完善文档
 
 ---
 
-## 📅 每日前沿（每天 19:00 自动更新）
+## 📅 每日前沿（工作日 19:00 自动更新）
 
-> 每天 19:00 自动更新，覆盖**厂商方案、实战内容、前沿跟踪、产品分析**四大方向，7 天前的日报自动归档。
+> 工作日 19:00 自动更新，覆盖**厂商方案、实战内容、前沿跟踪、产品分析**四大方向，7 天前的日报自动归档。
 
 <!-- BEGIN_HOME_INDEX -->
 ### 2026年8月
