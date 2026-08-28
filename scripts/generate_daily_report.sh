@@ -8,6 +8,7 @@
 #   LLM_API_KEY   (必填) LLM API Key（OpenAI 兼容格式）
 #   LLM_BASE_URL  (可选) API 地址，默认 https://api.deepseek.com
 #   LLM_MODEL     (可选) 模型名，默认 deepseek-chat
+#   LLM_MAX_TOKENS (可选) 最大输出 token 数，默认 8192（推理模型思考也耗 token，可调大）
 #   TODAY         (可选) 指定生成日期 YYYY-MM-DD，默认北京时间今天
 #   MOCK          (可选) 1 = 不调用 API，写入示例内容（用于测试）
 #   DRY_RUN       (可选) 1 = 只打印将执行的动作，不写文件不调 API
@@ -182,13 +183,19 @@ else
     echo "❌ 未设置 LLM_API_KEY（请配置 GitHub Actions Secret）" >&2
     exit 1
   fi
-  echo "🤖 调用 LLM 生成日报 (model=$LLM_MODEL)..."
+  echo "🤖 调用 LLM 生成日报 (model=${LLM_MODEL:-deepseek-chat})..."
+
+  BASE_URL="${LLM_BASE_URL:-https://api.deepseek.com}"
+  MODEL="${LLM_MODEL:-deepseek-chat}"
+  LLM_MAX_TOKENS="${LLM_MAX_TOKENS:-8192}"
 
   # 构造 payload（用 python3 json.dumps 保证转义安全）
-  python3 - "$DIRECTION" "$TODAY" "$YESTERDAY_SUMMARY" > /tmp/daily_payload.json <<'PYEOF'
-import json, os, sys
-import datetime
-direction, today, yesterday = sys.argv[1], sys.argv[2], sys.argv[3]
+  build_payload() { # build_payload <max_tokens> <temperature>
+    python3 - "$DIRECTION" "$TODAY" "$YESTERDAY_SUMMARY" "$MODEL" "$1" "$2" > /tmp/daily_payload.json <<'PYEOF'
+import json, sys, datetime
+direction, today, yesterday, model = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+max_tokens = int(sys.argv[5])
+temperature = float(sys.argv[6])
 # 防御性清洗：argv 可能带 surrogate（非法字节），先替换为安全字符
 direction = direction.encode("utf-8", "replace").decode("utf-8")
 today = today.encode("utf-8", "replace").decode("utf-8")
@@ -217,45 +224,186 @@ user = f"""请生成 {today}（星期{wd}）的《无人驾驶技术日报》，
 4. 如果过去 24 小时确实没有值得收录的新信息，只输出一行：SKIP
 5. 只输出 markdown 正文，不要任何额外说明。"""
 print(json.dumps({
-    "model": os.environ.get("LLM_MODEL", "deepseek-chat"),
-    "temperature": 0.7,
-    "max_tokens": 3000,
+    "model": model,
+    "temperature": temperature,
+    "max_tokens": max_tokens,
+    "stream": False,
     "messages": [
         {"role": "system", "content": system},
         {"role": "user", "content": user},
     ],
 }, ensure_ascii=False))
 PYEOF
+  }
 
-  HTTP_CODE="$(curl -sS --max-time 120 -o /tmp/llm_resp.json -w '%{http_code}' -X POST "${LLM_BASE_URL:-https://api.deepseek.com}/chat/completions" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer ${LLM_API_KEY}" \
-    --data @/tmp/daily_payload.json)" || { echo "❌ LLM API 请求失败（网络/超时）" >&2; exit 1; }
+  # 解析响应（stdout=正文，stderr=诊断，exit=0/2/3）
+  # 兼容: message.content / reasoning_content(仅 finish_reason=stop 时兜底) / choices[0].text / 数组分段格式
+  parse_resp() {
+    python3 - /tmp/llm_resp.json 2>/tmp/llm_diag.txt <<'PYEOF'
+import json, re, sys
 
+def text_of(content):
+    if content is None:
+        return ""
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):  # 新格式: [{type:text,text:...}]
+        parts = []
+        for p in content:
+            if isinstance(p, dict):
+                parts.append(p.get("text") or p.get("content") or "")
+            elif isinstance(p, str):
+                parts.append(p)
+        return "".join(parts)
+    return ""
+
+def clean(s):
+    s = s.strip()
+    m = re.match(r"^```[a-zA-Z]*\s*\n", s)
+    if m:
+        s = s[m.end():]
+    if s.endswith("```"):
+        s = s[:-3]
+    lines = s.split("\n")
+    while lines and (lines[0].startswith("# 无人驾驶技术日报") or lines[0].startswith("> 内容来源")):
+        lines.pop(0)
+    return "\n".join(lines).strip()
+
+try:
+    data = json.load(open(sys.argv[1], encoding="utf-8"))
+except Exception as e:
+    print(f"JSON 解析失败: {e}", file=sys.stderr)
+    sys.exit(2)
+
+if isinstance(data, dict) and data.get("error"):
+    print("API 返回 error 字段: " + json.dumps(data["error"], ensure_ascii=False)[:2000], file=sys.stderr)
+    sys.exit(3)
+
+choices = []
+if isinstance(data, dict):
+    choices = data.get("choices") or []
+out = ""
+meta = {"finish_reason": None, "usage": data.get("usage") if isinstance(data, dict) else None}
+for ch in choices:
+    if not isinstance(ch, dict):
+        continue
+    msg = ch.get("message") or {}
+    fr = ch.get("finish_reason")
+    if meta["finish_reason"] is None and fr:
+        meta["finish_reason"] = fr   # 记录首个 choice 的 finish_reason（即使无正文）
+    c = text_of(msg.get("content"))
+    if not c and fr != "length":
+        # 仅当正常结束(stop)时兜底 reasoning_content；finish_reason=length 说明
+        # token 预算被思考过程耗尽，reasoning_content 只是思维链，不能当正文发布
+        c = text_of(msg.get("reasoning_content"))
+    if not c:
+        c = text_of(ch.get("text"))                # 老式 completions 格式
+    if c:
+        out = c
+        meta["finish_reason"] = fr
+        break
+
+with open("/tmp/llm_meta.json", "w", encoding="utf-8") as f:
+    json.dump(meta, f, ensure_ascii=False)
+
+if not out:
+    diag = {
+        "choices": len(choices),
+        "finish_reason": [c.get("finish_reason") for c in choices if isinstance(c, dict)],
+        "usage": meta["usage"],
+        "reasoning_content存在": any((ch.get("message") or {}).get("reasoning_content")
+                                    for ch in choices if isinstance(ch, dict)),
+        "响应前500字符": json.dumps(data, ensure_ascii=False)[:500],
+    }
+    print(json.dumps(diag, ensure_ascii=False, indent=2), file=sys.stderr)
+    sys.exit(2)
+
+print(clean(out))
+PYEOF
+  }
+
+  build_payload "$LLM_MAX_TOKENS" 0.7
+
+  # 调用 LLM API（非 2xx 自动重试一次）
+  HTTP_CODE=""
+  for attempt in 1 2; do
+    HTTP_CODE="$(curl -sS --max-time 180 -o /tmp/llm_resp.json -w '%{http_code}' -X POST "${BASE_URL}/chat/completions" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer ${LLM_API_KEY}" \
+      --data @/tmp/daily_payload.json)" || { echo "❌ LLM API 请求失败（网络/超时）" >&2; exit 1; }
+    if [[ "$HTTP_CODE" == "2"* ]]; then
+      break
+    fi
+    if [[ "$attempt" == "1" ]]; then
+      echo "⚠️ LLM API 返回 HTTP $HTTP_CODE，5 秒后重试..." >&2
+      echo "错误详情: $(head -c 1000 /tmp/llm_resp.json 2>/dev/null)" >&2
+      sleep 5
+    fi
+  done
   if [[ "$HTTP_CODE" != "2"* ]]; then
     echo "❌ LLM API 返回 HTTP $HTTP_CODE" >&2
     echo "错误详情: $(head -c 2000 /tmp/llm_resp.json 2>/dev/null)" >&2
-    echo "请求地址: ${LLM_BASE_URL:-https://api.deepseek.com}/chat/completions" >&2
+    echo "请求地址: ${BASE_URL}/chat/completions" >&2
     exit 1
   fi
-  RESP="$(cat /tmp/llm_resp.json)"
 
-  CONTENT="$(printf '%s' "$RESP" | jq -r '.choices[0].message.content // empty' | python3 -c '
-import sys, re
-s = sys.stdin.read().strip()
-m = re.match(r"^```[a-zA-Z]*\s*\n", s)
-if m: s = s[m.end():]
-if s.endswith("```"): s = s[:-3]
-# 去除 LLM 可能重复输出的头部（脚本会统一写入头部）
-lines = s.split("\n")
-while lines and (lines[0].startswith("# 无人驾驶技术日报") or lines[0].startswith("> 内容来源")):
-    lines.pop(0)
-s = "\n".join(lines).strip()
-print(s)
-')"
+  # 解析首次响应；按结果决定是否重试：
+  #   正文为空                → finish_reason=length(推理 token 耗尽)时提高 token 上限，否则降低 temperature
+  #   内容不符合日报格式      → 可能是思维链/无关文本，重新生成
+  CONTENT="$(parse_resp)" || true
+  NEED_RETRY=0
   if [[ -z "$CONTENT" ]]; then
-    echo "❌ LLM 返回内容为空" >&2
+    NEED_RETRY=1
+  elif [[ "${MOCK:-0}" != "1" ]] && [[ "$CONTENT" != SKIP* ]] \
+       && ! grep -qE '^[[:space:]]*### ' <<<"$CONTENT" && ! grep -q '\*\*摘要\*\*' <<<"$CONTENT"; then
+    echo "⚠️ 首次返回内容不符合日报格式（无 ### 板块 / **摘要**），重新生成..." >&2
+    NEED_RETRY=1
+  fi
+
+  if [[ "$NEED_RETRY" == "1" ]]; then
+    FR="$(python3 -c 'import json
+try: print(json.load(open("/tmp/llm_meta.json")).get("finish_reason") or "")
+except Exception: print("")' 2>/dev/null || true)"
+    if [[ -z "$CONTENT" ]] && [[ "$FR" == "length" ]]; then
+      echo "⚠️ 推理 token 耗尽（finish_reason=length），提高 token 上限重试..." >&2
+      RETRY_TOKENS="$((LLM_MAX_TOKENS * 2))"
+    else
+      echo "⚠️ 重新生成（temperature=0.3）..." >&2
+      RETRY_TOKENS="$LLM_MAX_TOKENS"
+    fi
+    sleep 5
+    build_payload "$RETRY_TOKENS" 0.3
+    HTTP_CODE="$(curl -sS --max-time 180 -o /tmp/llm_resp.json -w '%{http_code}' -X POST "${BASE_URL}/chat/completions" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer ${LLM_API_KEY}" \
+      --data @/tmp/daily_payload.json)" || { echo "❌ LLM API 请求失败（网络/超时）" >&2; exit 1; }
+    if [[ "$HTTP_CODE" != "2"* ]]; then
+      echo "❌ LLM API 返回 HTTP $HTTP_CODE（重试）" >&2
+      echo "错误详情: $(head -c 2000 /tmp/llm_resp.json 2>/dev/null)" >&2
+      exit 1
+    fi
+    CONTENT="$(parse_resp)" || true
+  fi
+
+  # 重试后最终校验：正文为空 或 内容仍不符合日报格式（排除 SKIP/MOCK）
+  INVALID=0
+  if [[ -z "$CONTENT" ]]; then
+    INVALID=1
+  elif [[ "${MOCK:-0}" != "1" ]] && [[ "$CONTENT" != SKIP* ]] \
+       && ! grep -qE '^[[:space:]]*### ' <<<"$CONTENT" && ! grep -q '\*\*摘要\*\*' <<<"$CONTENT"; then
+    INVALID=1
+  fi
+  if [[ "$INVALID" == "1" ]]; then
+    echo "❌ LLM 返回内容为空或格式不符（完整响应保留在 /tmp/llm_resp.json）" >&2
+    echo "--- 响应诊断 ---" >&2
+    if [[ -s /tmp/llm_diag.txt ]]; then
+      cat /tmp/llm_diag.txt >&2
+    fi
     exit 1
+  fi
+
+  if [[ -s /tmp/llm_meta.json ]]; then
+    echo "ℹ️ 模型输出统计: $(cat /tmp/llm_meta.json)"
   fi
 fi
 
